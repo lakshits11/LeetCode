@@ -15,6 +15,8 @@ public:
     }
     
     int closedIsland(vector<vector<int>>& grid){
+        ios_base::sync_with_stdio(false);
+        cin.tie(nullptr);
         int res=0;
         for(int i=0;i<grid.size();i++)
         {
