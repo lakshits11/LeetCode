@@ -3,8 +3,8 @@ class Solution
 public:
     vector<int> topKFrequent(vector<int> &nums, int k)
     {
-        ios_base::sync_with_stdio(false);
-        cin.tie(nullptr);
+        // ios_base::sync_with_stdio(false);
+        // cin.tie(nullptr);
         if (k == nums.size())
             return nums;
 
