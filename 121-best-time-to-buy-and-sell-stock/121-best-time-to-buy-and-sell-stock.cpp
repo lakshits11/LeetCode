@@ -4,7 +4,7 @@ public:
     int maxProfit(vector<int> &arr)
     {
         ios::sync_with_stdio(false);
-        cin.tie(NULL);
+        // cin.tie(NULL);
         // cout.tie(NULL);
         int maxProfit = 0;
         int minElement = arr[0];
