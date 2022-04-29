@@ -9,7 +9,7 @@ public:
         int maxi = 1;
         
         for (int i = 2; i <= n; i++) {
-            arr[i] = i&1 ? (arr[i>>1] + arr[(i>>1) + 1]) : arr[i>>1];
+            arr[i] = i % 2 == 0 ? arr[i/2] : arr[i / 2] + arr[i / 2 + 1];
             maxi = max(maxi, arr[i]);
         }
         
