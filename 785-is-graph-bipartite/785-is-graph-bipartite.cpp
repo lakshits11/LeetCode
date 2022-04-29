@@ -1,41 +1,30 @@
 class Solution {
 public:
     bool isBipartite(vector<vector<int>>& graph) {
-        vector<int> colored(graph.size(), -1);
-        colored[0]=1;
-        vector<int> visited(graph.size(),0);
+        int n = graph.size();
+        vector<int>color(n,-1);
         
-        for(int i=0;i<graph.size();i++)
-        {
-            if(visited[i]==0)
-            {
-                visited[i]=1;
-                queue<int> q;
-                q.push(i);
-
-                while(!q.empty())
-                {
-                    int u = q.front();
-                    q.pop();
-
-                    for(int x : graph[u])
-                    {
-                        if(colored[x]==-1)
-                        {
-                            colored[x]=1-colored[u];
-                            q.push(x);
-                        }
-                        else if(colored[x]==colored[u])
-                        {
-                            return false;
-                        }
-                    }
-                }
-            }
+        for(int i=0;i<n;i++){
+            if(color[i]==-1){
+                // then we have to check there is no matching color
+                if(!dfs(i,color,graph)) return false;
+            }   
         }
-        
         return true;
+    }
+    
+    bool dfs(int node,vector<int>&color,vector<vector<int>>&graph){
+       
+        if(color[node]==-1)color[node] =1;
         
-        
+        for(auto it:graph[node]){
+            if(color[it]==-1){
+                color[it] = 1- color[node];
+                if(!dfs(it,color,graph))return false;
+            }
+            if(color[it]==color[node]) return false;
+            
+        }
+        return true;
     }
 };
