@@ -1,6 +1,8 @@
 class Solution {
 public:
 	int numTeams(vector<int>& arr) {
+        ios_base::sync_with_stdio(false);
+        cin.tie(nullptr);
 		int count = 0;
 		int len = arr.size();
 		for (int j = 0; j < len; j++) {
