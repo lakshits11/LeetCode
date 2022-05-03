@@ -1,6 +1,8 @@
 class Solution {
 public:
     vector<int> getRow(int n) {
+        ios_base::sync_with_stdio(false);
+        cin.tie(nullptr);
         vector<int> ans(n+1,0);
         ans[0]=1;
         for(int i=1;i<=n;++i)
