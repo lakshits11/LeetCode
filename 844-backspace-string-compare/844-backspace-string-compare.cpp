@@ -1,6 +1,7 @@
 class Solution {
 public:
     bool backspaceCompare(string s, string t) {
+        ios_base::sync_with_stdio(false);
         stack<char> s1;
         stack<char> s2;
         int n = s.size();
