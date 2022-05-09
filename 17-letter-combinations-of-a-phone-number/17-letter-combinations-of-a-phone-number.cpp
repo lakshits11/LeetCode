@@ -5,6 +5,8 @@ public:
 
     vector<string> letterCombinations(string digits)
     {
+        ios_base::sync_with_stdio(false);
+        cin.tie(nullptr);
         if (digits.empty())
             return {};
         vector<string> res;
