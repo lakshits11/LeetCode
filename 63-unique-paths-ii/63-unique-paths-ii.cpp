@@ -1,6 +1,9 @@
 class Solution {
 public:
     int uniquePathsWithObstacles(vector<vector<int>>& grid) {
+        
+        ios_base::sync_with_stdio(false);
+        
         int w= grid[0].size();
         vector<int> dp(w);
         dp[0]=1;
