@@ -3,17 +3,19 @@ public:
     int numberOfSteps(int num) {
         ios_base::sync_with_stdio(false);
         cin.tie(nullptr);
-        vector<int> dp(num+3);
-        dp[0] = 0;
-        dp[1] = 1;
-        dp[2] = 2;
-        for(int i=3;i<=num;i++)
+        int ans = 0;
+        while(num>0)
         {
-            if(i%2==0)
-                dp[i] = 1 + dp[i/2];
-            else
-                dp[i] = 1 + dp[i-1];
+            if(num%2==0)
+            {
+                ans++;
+                num/=2;
+            }
+            else{
+                ans++;
+                num--;
+            }
         }
-        return dp[num];
+        return ans;
     }
 };
