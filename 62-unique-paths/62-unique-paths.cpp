@@ -1,23 +1,20 @@
 class Solution {
 public:
+    
+    // must see discussions:
+    // https://leetcode.com/problems/unique-paths/discuss/22954/C%2B%2B-DP
+    // https://leetcode.com/problems/unique-paths/discuss/22958/Math-solution-O(1)-space
+    
     int uniquePaths(int m, int n) {
-        ios_base::sync_with_stdio(false);
-        cin.tie(nullptr);
-        vector<vector<int>> dp(m, vector<int>(n,0));
-        for(int i=0;i<n;i++)
-        {
-            dp[0][i]=1;
-        }
-        for(int i=0;i<m;i++)
-        {
-            dp[i][0]=1;
-        }
+        int curr[n];
+        for(int i=0;i<n;i++)    curr[i]=1;
         for(int i=1;i<m;i++){
-            for(int j=1;j<n;j++){
-                dp[i][j] = dp[i-1][j] + dp[i][j-1];
+            for(int j=1;j<n;j++)
+            {
+                curr[j] += curr[j-1];
             }
         }
-        
-        return dp[m-1][n-1];
+        return curr[n-1];
+                
     }
 };
