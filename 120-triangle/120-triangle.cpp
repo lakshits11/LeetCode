@@ -3,6 +3,7 @@ class Solution
 public:
     int minimumTotal(vector<vector<int>> &triangle)
     {
+        ios_base::sync_with_stdio(false);
         int n = triangle.size();
         for (int i = 1; i < n; i++)
         {
