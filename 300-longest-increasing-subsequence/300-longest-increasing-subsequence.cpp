@@ -1,22 +1,22 @@
-class Solution {
+class Solution
+{
 public:
-    int lengthOfLIS(vector<int>& arr) {
+    int lengthOfLIS(vector<int> &nums)
+    {
         vector<int> temp;
-        int len=1, n=arr.size();
-        temp.push_back(arr[0]);
-        for(int i=1;i<n;i++)
+        int n = nums.size();
+        temp.push_back(nums[0]);
+
+        for (int i = 1; i < n; i++)
         {
-            if(arr[i]>temp.back())
-            {
-                temp.push_back(arr[i]);
-                len++;
-            }
+            if (nums[i] > temp.back())
+                temp.push_back(nums[i]);
             else
             {
-                auto x = lower_bound(temp.begin(), temp.end(), arr[i]);
-                *x = arr[i];
+                int ind = lower_bound(temp.begin(), temp.end(), nums[i]) - temp.begin();
+                temp[ind] = nums[i];
             }
         }
-        return len;
+        return temp.size();
     }
 };
