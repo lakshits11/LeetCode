@@ -1,0 +1,33 @@
+class Solution {
+public:    
+    int maxCoins(vector<int>& nums) {
+        int n = nums.size(), maxi;
+        nums.push_back(1);
+        nums.insert(nums.begin(), 1);
+        vector<vector<int>> dp(n+2, vector<int> (n+2, 0));
+        
+        for(int i=n;i>=1;i--)
+        {
+            for(int j=i;j<=n;++j)
+            {
+                maxi  = -1e9;
+                for(int ind=i;ind<=j;++ind)
+                {
+                    maxi = max(maxi, nums[i-1]*nums[ind]*nums[j+1] + dp[i][ind-1] + dp[ind+1][j]);
+                }
+                dp[i][j] = maxi;
+            }
+        }
+        
+        // for(int i=0;i<n+2;++i)
+        // {
+        //     for(int j=0; j<n+2;j++)
+        //     {
+        //         cout << dp[i][j] << " ";
+        //     }
+        //     cout << "\n";
+        // }
+        
+        return dp[1][n];
+    }
+};
