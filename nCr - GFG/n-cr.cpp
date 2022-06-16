@@ -14,20 +14,21 @@ public:
         if(r>n) return 0;
         if(r==n)    return 1;
         
-        vector<vector<long>> dp(n+1, vector<long>(r+1, 0));
+        vector<long> prev(r+1, 0);
+        vector<long> temp(r+1, 0);
         for(int i=1;i<=n;++i){
-            for(int j=0;j<=min(r, n);++j)
+            for(int j=0;j<=r;++j)
             {
-                if(r>n) continue;
                 if(i==j || j==0)
-                    dp[i][j]=1;
+                    temp[j]=1;
                 else {
-                    dp[i][j] = (dp[i-1][j-1] + dp[i-1][j])%mod;
+                    temp[j] = (prev[j-1] + prev[j])%mod;
                 }
             }
+            prev = temp;
         }
         
-        return dp[n][r];
+        return prev[r];
     }
 };
 
