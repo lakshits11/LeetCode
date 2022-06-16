@@ -8,22 +8,20 @@ class Solution{
     
     int longestCommonSubstr (string s1, string s2, int n, int m)
     {
-        int prev[m+1], temp[m+1];
+        int temp[m+1];
         int maxi = 0;
-        memset(prev, 0, sizeof(prev));
         memset(temp, 0, sizeof(temp));
         
         for(int i=1;i<=n;i++)
         {
-            for(int j=1;j<=m;j++)
+            for(int j=m;j>=1;j--)
             {
                 if(s1[i-1]==s2[j-1])
-                    temp[j] = 1+prev[j-1];
+                    temp[j] = 1+temp[j-1];
                 else
                     temp[j] = 0;
                 maxi = max(maxi, temp[j]);
             }
-            copy(temp, temp+m, prev);
         }
         
         return maxi;
