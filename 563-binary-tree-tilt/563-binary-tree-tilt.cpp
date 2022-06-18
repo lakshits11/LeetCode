@@ -11,14 +11,20 @@
  */
 class Solution {
 public:
+    int diff = 0;
     int sumtotal(TreeNode* root)
     {
         if(root==NULL)
             return 0;
-        return root->val + sumtotal(root->left) + sumtotal(root->right);
+        if(root->left==NULL && root->right==NULL)
+            return root->val;
+        int l = sumtotal(root->left);
+        int r = sumtotal(root->right);
+        diff += abs(l-r);
+        return root->val + l + r;
     }
     int findTilt(TreeNode* root) {
-        if(root==NULL)  return 0;
-        return findTilt(root->left) + findTilt(root->right) + abs(sumtotal(root->left)-sumtotal(root->right));
+        sumtotal(root);
+        return diff;
     }
 };
