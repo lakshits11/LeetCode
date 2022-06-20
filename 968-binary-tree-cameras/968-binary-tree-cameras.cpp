@@ -11,18 +11,33 @@
  */
 class Solution {
 public:
-    int res = 0;
-    int minCameraCover(TreeNode* root) {
-        return (dfs(root) < 1 ? 1 : 0) + res;
-    }
-
-    int dfs(TreeNode* root) {
-        if (!root) return 2;
-        int left = dfs(root->left), right = dfs(root->right);
-        if (left == 0 || right == 0) {
-            res++;
-            return 1;
+    int sum = 0;
+    
+    /*
+    Conditions:
+    0 => Node not monitored
+    1 => Node monitored but dont have camera on itself
+    2 => Node has camera on itself
+    */
+    
+    int dfs(TreeNode* node)
+    {
+        if(node==NULL)  return 1;
+        int left = dfs(node->left), right = dfs(node->right);
+        
+        // If atleast one child is not monitored, we need to place a camera there
+        if(left==0 || right==0){
+            sum++;
+            return 2;
         }
-        return left == 1 || right == 1 ? 2 : 0;
+        
+        else if(left==2 || right==2)    return 1;
+        return 0;
+    }
+    
+    int minCameraCover(TreeNode* root) {
+        // If root isn't monitored, we place an additional camera there
+        if(dfs(root)==0)   sum++;
+        return sum;
     }
 };
