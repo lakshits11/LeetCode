@@ -1,19 +1,25 @@
-class Solution {
+class Solution
+{
 public:
-    int kthSmallest(TreeNode* root, int k) {
-        stack<TreeNode*> s;
-        
-        while(root!=NULL || !s.empty())
+    int kthSmallest(TreeNode *root, int k)
+    {
+        stack<TreeNode *> s;
+
+        while (true)
         {
-            while(root!=NULL)
+            if (root != NULL)
             {
                 s.push(root);
                 root = root->left;
             }
-            root = s.top();
-            s.pop();
-            if(--k==0)  break;
-            root=root->right;
+            else
+            {
+                root = s.top();
+                s.pop();
+                if (--k == 0)
+                    return root->val;
+                root = root->right;
+            }
         }
         return root->val;
     }
