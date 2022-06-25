@@ -5,36 +5,44 @@ using namespace std;
  // } Driver Code Ends
 class Solution {
   public:
-    
-    bool checkby_dfs(int prev,int node, vector<int> adj[], vector<int> &visited) 
-  {
-       visited[node]=1;
-       for(auto u :adj[node])
-       {
-           if(!visited[u])
-           {
-              if(checkby_dfs(node,u,adj,visited))
-              return true;
-           }
-           else if(u!=prev)
-           return true;
-       }
-       return false;
-   }
-   bool isCycle(int V, vector<int> adj[])
-   {
-       vector<int> visited(V, 0);
-       
-       for(int i=0; i<V; i++)
-       {
-           if(visited[i] == 0)
-           {
-               if(checkby_dfs(-1,i, adj, visited))
-                   return true;
-           }
-       }
-       return false;
-   }
+
+bool dfs(int node, vector<int> &vis, vector<int> adj[], int parent)
+    {
+        vis[node] = 1;
+        //cout<<"Marking node : "<<node<<"as visited\n";
+        for (auto x : adj[node])
+        {
+          //  cout<<"At nei : "<<x<<endl;
+            if (vis[x]==0)
+            {
+               // cout<<"Visiting it\n";
+                if (dfs(x, vis, adj, node))
+                    return true;
+            }
+            else if (x != parent)
+            {
+                
+               return true;
+                
+            }
+        }
+        return false;
+    }
+
+    bool isCycle(int n, vector<int> adj[])
+    {
+        vector<int> vis(n, 0);
+        for (int i = 0; i < n; i++)
+        {
+            if (vis[i] == 0 && adj[i].size()>0)
+            {
+               // cout<<"at node : "<<i<<endl;
+                if (dfs(i, vis, adj, -1))
+                    return true;
+            }
+        }
+        return false;
+    }   
 };
 
 // { Driver Code Starts.
