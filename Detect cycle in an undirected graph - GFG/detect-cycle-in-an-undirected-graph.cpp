@@ -3,27 +3,33 @@
 using namespace std;
 
  // } Driver Code Ends
-class Solution {
-  public:
 
-bool dfs(int node, vector<int> &vis, vector<int> adj[], int parent)
+class Solution
+{
+public:
+    bool bfs(int node, vector<int> adj[], vector<int> &vis)
     {
         vis[node] = 1;
-        //cout<<"Marking node : "<<node<<"as visited\n";
-        for (auto x : adj[node])
+        queue<pair<int, int>> q;
+        q.push({node, -1});
+        while (!q.empty())
         {
-          //  cout<<"At nei : "<<x<<endl;
-            if (vis[x]==0)
+            int t = q.front().first;
+            int prev = q.front().second;
+
+            q.pop();
+            for (int x : adj[t])
             {
-               // cout<<"Visiting it\n";
-                if (dfs(x, vis, adj, node))
+                if (!vis[x])
+                {
+                    vis[x] = 1;
+                    q.push({x, t});
+                }
+                // it means node is already visited and
+                // node's (here it means => x's) parent is
+                // not the prev node we stored
+                else if (prev != x)
                     return true;
-            }
-            else if (x != parent)
-            {
-                
-               return true;
-                
             }
         }
         return false;
@@ -31,18 +37,15 @@ bool dfs(int node, vector<int> &vis, vector<int> adj[], int parent)
 
     bool isCycle(int n, vector<int> adj[])
     {
-        vector<int> vis(n, 0);
-        for (int i = 0; i < n; i++)
+        vector<int> vis(n + 1, 0);
+        for (int i = 1; i < n; i++)
         {
-            if (vis[i] == 0 && adj[i].size()>0)
-            {
-               // cout<<"at node : "<<i<<endl;
-                if (dfs(i, vis, adj, -1))
+            if (!vis[i])
+                if (bfs(i, adj, vis))
                     return true;
-            }
         }
         return false;
-    }   
+    }
 };
 
 // { Driver Code Starts.
