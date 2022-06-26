@@ -3,41 +3,38 @@
 using namespace std;
 
  // } Driver Code Ends
-
-
 class Solution
 {
-public:
-    void findTopoSort(int node, vector<int> &vis, vector<int> &ans, vector<int> adj[])
-    {
-        vis[node] = 1;
-
-        for (int x : adj[node])
-        {
-            if (!vis[x])
-                findTopoSort(x, vis, ans, adj);
-        }
-        
-        ans.push_back(node);
-    }
-
-    vector<int> topoSort(int n, vector<int> adj[])
-    {
-        vector<int> ans;
-        vector<int> vis(n, 0);
-        for (int i = 0; i < n; ++i)
-        {
-            if (vis[i] == 0)
-            {
-                findTopoSort(i, vis, ans, adj);
-            }
-        }
-        reverse(ans.begin(), ans.end());
-        return ans;
-    }
+	public:
+	vector<int> topoSort(int n, vector<int> adj[]) 
+	{
+	    queue<int> q;
+	    vector<int> indegree(n,0);
+	    for(int i=0;i<n;i++)
+	    {
+	        for(auto x : adj[i])
+	            indegree[x]++;
+	    }
+	    for(int i=0;i<n;i++)
+	    {
+	        if(indegree[i]==0)
+	            q.push(i);
+	    }
+	    vector<int> topo;
+	    while(!q.empty())
+	    {
+	        int node = q.front();
+	        q.pop();
+	        topo.push_back(node);
+	        for(int x: adj[node])
+	        {
+	            if(--indegree[x]==0)
+	                q.push(x);
+	        }
+	    }
+	    return topo;
+	}
 };
-
-
 
 // { Driver Code Starts.
 
