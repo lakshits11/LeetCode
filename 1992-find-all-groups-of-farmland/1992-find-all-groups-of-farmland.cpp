@@ -1,8 +1,6 @@
 class Solution {
 private:
     int maxi = 0, maxj=0;
-public:
-    // int maxi = 0, maxj = 0;
     void dfs(int i, int j, vector<vector<int>> &land)
     {
         if(i<0 || i>=land.size() || j<0 || j>=land[0].size() || land[i][j]==0)
@@ -14,8 +12,9 @@ public:
         dfs(i+1, j, land);
         dfs(i, j+1, land);
     }
-    
+public:
     vector<vector<int>> findFarmland(vector<vector<int>>& land) {
+        ios_base::sync_with_stdio(false);
         int m = land.size(), n = land[0].size();
         vector<vector<int>> ans;
         
