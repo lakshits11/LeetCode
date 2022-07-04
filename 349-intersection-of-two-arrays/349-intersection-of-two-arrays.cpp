@@ -2,6 +2,12 @@ class Solution {
 public:
     vector<int> intersection(vector<int> &a, vector<int> &b)
     {
+        /*
+        FACEBOOK INTERVIEW QUESTION
+        Given 2 sorted arrays, find their intersection in O(n) time and O(1) space.
+        Here in below solution, if arrays were already sorted,
+        Time complexity is O(N) and Space Complexity is O(1)
+        */
         vector<int> ans;
         sort(a.begin(), a.end());
         sort(b.begin(), b.end());
