@@ -4,43 +4,49 @@ using namespace std;
 
  // } Driver Code Ends
 
-class Solution {
-  public:
-    
-    bool checkCycle(int node, vector<int> adj[], int vis[], int dfsVis[])
+
+class Solution
+{
+public:
+    bool checkCycle(int node, vector<int> adj[], int vis[], int dfs[])
     {
         vis[node] = 1;
-        dfsVis[node] = 1;
+        dfs[node] = 1;
         for(int x : adj[node])
         {
-            if(!vis[x]) {
-                if(checkCycle(x,adj,vis,dfsVis))
+            if(!vis[x])
+            {
+                if(checkCycle(x, adj, vis, dfs))
                     return true;
             }
-            else if(dfsVis[x])
+            else if(dfs[x] == 1)
                 return true;
         }
-        dfsVis[node] = 0;
+        dfs[node]= 0;
         return false;
     }
-    
-    bool isCyclic(int n, vector<int> adj[]) {
+
+    bool isCyclic(int n, vector<int> adj[])
+    {
         int vis[n], dfsVis[n];
         memset(vis, 0, sizeof(vis));
         memset(dfsVis, 0, sizeof(dfsVis));
-        
-        for(int i=0;i<n;i++)
+
+        for (int i = 0; i < n; i++)
         {
-            if(!vis[i])
+            if (!vis[i])
             {
-                if(checkCycle(i, adj, vis, dfsVis))
+                if (checkCycle(i, adj, vis, dfsVis))
                     return true;
             }
         }
-        
+
         return false;
     }
 };
+
+
+
 
 // { Driver Code Starts.
 
