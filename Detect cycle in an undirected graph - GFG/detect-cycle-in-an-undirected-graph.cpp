@@ -4,50 +4,53 @@ using namespace std;
 
  // } Driver Code Ends
 
+
+
+
 class Solution
 {
 public:
-    bool bfs(int node, vector<int> adj[], vector<int> &vis)
+    bool bfs(vector<int> adj[], vector<int> &vis, int node)
     {
         vis[node] = 1;
+        // q stores parent, node
         queue<pair<int, int>> q;
-        q.push({node, -1});
-        while (!q.empty())
+        q.push({-1, node});
+        while(!q.empty())
         {
-            int t = q.front().first;
-            int prev = q.front().second;
-
+            int parent = q.front().first;
+            int temp = q.front().second;
             q.pop();
-            for (int x : adj[t])
+            for(int x : adj[temp])
             {
-                if (!vis[x])
+                if(!vis[x])
                 {
                     vis[x] = 1;
-                    q.push({x, t});
+                    q.push({temp, x});
                 }
-                // it means
-                // it means node is already visited and
-                // node's (here it means => x's) parent is
-                // not the prev node we stored
-                else if (x != prev)
+                else if(x != parent)
                     return true;
             }
         }
         return false;
     }
-
     bool isCycle(int n, vector<int> adj[])
     {
-        vector<int> vis(n + 1, 0);
-        for (int i = 1; i < n; i++)
+        vector<int> vis(n, 0);
+        for (int i = 0; i < n; i++)
         {
             if (!vis[i])
-                if (bfs(i, adj, vis))
+            {
+                if (bfs(adj, vis, i))
                     return true;
+            }
         }
         return false;
     }
 };
+
+
+
 
 // { Driver Code Starts.
 int main() {
