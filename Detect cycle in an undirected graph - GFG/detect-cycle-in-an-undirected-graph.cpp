@@ -25,10 +25,11 @@ public:
                     vis[x] = 1;
                     q.push({x, t});
                 }
+                // it means
                 // it means node is already visited and
                 // node's (here it means => x's) parent is
                 // not the prev node we stored
-                else if (prev != x)
+                else if (x != prev)
                     return true;
             }
         }
