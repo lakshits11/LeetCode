@@ -1,66 +1,48 @@
-// class Solution {
-// public:
-//     string decodeString(string s) {
-//         stack<string> st;
-//         string ans;
-//         for(int i=0;i<s.size();++i)
-//         {
-//             if(s[i]!=']')
-//             {
-//                 if(isdigit[s[i]])
-//                     st.push(s[i]+'0');
-//                 else
-//                     st.push(s[i]);
-//             }
-//             else
-//             {
-//                 string temp = "";
-//                 while(st.top() != '[')
-//                 {
-//                     temp.insert(0, 1, st.top());
-//                     st.pop();
-//                 }
-//                 st.pop();
-//                 string k = "";
-//                 while(!st.empty() && isdigit(st.top()))
-//                 {
-//                     k.insert(0,1,st.top());
-//                     st.pop();
-//                 }
-//                 int x = stoi(k);
-//                 k = temp;
-//                 while(x--)  temp.append(k);
-//                 st.push(temp);
-//             }
-//         }
-//         while(!s.empty())
-//         {
-//             ans.push_back(s.top());
-//         }
-//     }
-// };
+// By Lakshit Somani
+#include <bits/stdc++.h>
+using namespace std;
 
-class Solution {
-    string decodeString(string& s, int& i) {
-        string result;
-        while(i < s.length() && s[i] != ']'){
-            if(isdigit(s[i])){
-                int k = 0;
-                while(i < s.length() && isdigit(s[i]))
-                    k = k*10 + s[i++] - '0';
-                i++;
-                string r = decodeString(s, i);
-                while(k-- > 0)
-                    result += r;
-                i++;
-            } else
-                result += s[i++];
-        }
-        return result;
-    }
+class Solution
+{
 public:
-    string decodeString(string s) {
-        int i = 0;
-        return decodeString(s, i);
+    string decodeString(string s)
+    {
+        ios_base::sync_with_stdio(false);cin.tie(nullptr);
+        stack<int> countStack;
+        stack<string> wordStack;
+        int number = 0;
+        string word = "";
+        for (int i = 0; i < s.size(); i++)
+        {
+            char c = s[i];
+            if (isdigit(c))
+            {
+                number = number * 10 + (c - '0');
+            }
+            else if (isalpha(c))
+            {
+                word.push_back(c);
+            }
+            else if (c == '[')
+            {
+                countStack.push(number);
+                wordStack.push(word);
+                word = "";
+                number = 0;
+            }
+            else
+            {
+                int count = countStack.top();
+                countStack.pop();
+                string temp = wordStack.top();
+                wordStack.pop();
+                for (int i = 0; i < count; i++)
+                {
+                    temp.append(word);
+                }
+                word = temp;
+            }
+        }
+        return word;
     }
 };
