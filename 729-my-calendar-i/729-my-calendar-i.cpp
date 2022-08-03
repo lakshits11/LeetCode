@@ -1,18 +1,16 @@
 class MyCalendar {
 public:
-    unordered_map<int, int> u;
+    set<pair<int, int>> s;
     MyCalendar() {
         
     }
     
-    bool book(int sNew, int eNew) {
-        for(pair<int, int> x : u)
-        {
-            int sPrev = x.first, ePrev = x.second;
-            if(!(sPrev>=eNew || ePrev<=sNew))
-                return false;
-        }
-        u[sNew] = eNew;
+    bool book(int start, int end) {
+        auto slot = s.lower_bound({start, end});
+        if(slot != s.end() && !(slot->first >= end) ||
+          slot != s.begin() && !(prev(slot)->second <= start))
+            return false;
+        s.insert({start, end});
         return true;
     }
 };
