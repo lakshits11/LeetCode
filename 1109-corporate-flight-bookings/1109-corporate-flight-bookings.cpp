@@ -3,7 +3,7 @@ public:
     vector<int> corpFlightBookings(vector<vector<int>>& bookings, int n) {
         vector<int> ans(n);
         
-        for(vector<int> x : bookings)
+        for(vector<int> &x : bookings)
         {
             ans[x[0] - 1] += x[2];
             if(x[1]<n)
