@@ -9,19 +9,19 @@ public:
     {
         ios_base::sync_with_stdio(false);cin.tie(nullptr);
         int n = nums.size();
-        int mxLeft = INT_MIN;
-        int mnRight[n];
-        mnRight[n - 1] = nums[n - 1];
-        for (int i = n - 2; i >= 0; i--)
+        int maxLeft = nums[0];
+        int maxi = nums[0];
+        int p = 0;
+        for(int i = 0; i < n; i++)
         {
-            mnRight[i] = min(nums[i], mnRight[i + 1]);
+            if(nums[i] < maxLeft)
+            {
+                maxLeft = maxi;
+                p = i;
+            }
+            else if(nums[i] > maxi)
+                maxi = nums[i];
         }
-        for (int i = 0; i < n - 1; i++)
-        {
-            mxLeft = max(mxLeft, nums[i]);
-            if (mxLeft <= mnRight[i + 1])
-                return i + 1;
-        }
-        return -1;
+        return p+1;
     }
 };
