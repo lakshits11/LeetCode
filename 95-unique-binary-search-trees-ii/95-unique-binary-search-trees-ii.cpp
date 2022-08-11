@@ -1,34 +1,37 @@
-class Solution {
-private:
-    vector<TreeNode*> helper(int start, int end)
+class Solution
+{
+public:
+    TreeNode *copy_tree(TreeNode *root, int inc)
     {
-        vector<TreeNode*> ans;
-        if(start > end)
+        if (!root)
+            return nullptr;
+        TreeNode *new_root = new TreeNode(root->val + inc);
+        new_root->left = copy_tree(root->left, inc);
+        new_root->right = copy_tree(root->right, inc);
+        return new_root;
+    }
+    vector<TreeNode *> generateTrees(int n)
+    {
+        ios_base::sync_with_stdio(false);
+        vector<vector<TreeNode *>> tb(n + 1);
+        tb[0].push_back(nullptr);
+
+        for (int i = 1; i <= n; i++)
         {
-            ans.push_back(NULL);
-            return ans;
-        }
-        for(int i = start; i <= end; i++)
-        {
-            vector<TreeNode*> left =  helper(start, i-1);
-            vector<TreeNode*> right = helper(i+1, end);
-            
-            for(TreeNode* l : left)
+            for (int j = 1; j <= i; j++)
             {
-                for(TreeNode* r : right)
+                for (auto l_it = tb[j - 1].begin(); l_it != tb[j - 1].end(); ++l_it)
                 {
-                    TreeNode* root = new TreeNode(i);
-                    root->left = l;
-                    root->right = r;
-                    ans.push_back(root);
+                    for (auto r_it = tb[i - j].begin(); r_it != tb[i - j].end(); ++r_it)
+                    {
+                        tb[i].push_back(new TreeNode(j));
+                        tb[i].back()->left = copy_tree(*l_it, 0);
+                        tb[i].back()->right = copy_tree(*r_it, j);
+                    }
                 }
             }
         }
-        return ans;
-    }
-public:
-    vector<TreeNode*> generateTrees(int n)
-    {
-        return helper(1, n);
+
+        return tb[n];
     }
 };
