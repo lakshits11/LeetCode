@@ -1,31 +1,31 @@
-class Solution
-{
+class Solution {
 public:
-    int widthOfBinaryTree(TreeNode *root)
-    {
-        if (!root)
+    int widthOfBinaryTree(TreeNode* root) {
+        if(!root)
             return 0;
         int ans = 0;
-        queue<pair<TreeNode *, int>> q;
+        queue<pair<TreeNode*, int>> q;
         q.push({root, 0});
-        while (!q.empty())
+        while(!q.empty())
         {
-            int size = q.size();
-            int mini = q.front().second; // to make id starting from zero
-            int first, last;
-            for (int i = 0; i < size; i++)
+            int qlen = q.size();
+            int mini = q.front().second;
+            int last = 0, first = 0;
+            for(int i = 0; i < qlen; i++)
             {
+                TreeNode* node = q.front().first;
                 long currId = q.front().second - mini;
-                TreeNode *node = q.front().first;
                 q.pop();
-                if (i == 0)
-                    first = currId;
-                if (i == size - 1)
+                if(i == 0)
                     last = currId;
-                if(node->left)	q.push({node->left, currId*2 + 1});
-                if(node->right)	q.push({node->right, currId*2 + 2});
+                if(i == qlen-1)
+                    first = currId;
+                if(node->left)
+                    q.push({node->left, 2*currId + 1});
+                if(node->right)
+                    q.push({node->right, 2*currId + 2});
             }
-            ans = max(ans, last-first+1); 
+            ans = max(ans, first - last + 1);
         }
         return ans;
     }
