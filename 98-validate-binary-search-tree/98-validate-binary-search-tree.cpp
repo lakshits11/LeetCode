@@ -11,24 +11,15 @@
  */
 class Solution {
 public:
-    long long INF = 100000000000;
-    bool valid(TreeNode* root, long long left, long long right)
+    bool isValidBST(TreeNode* root, TreeNode* left = NULL, TreeNode* right = NULL)
     {
-        if(root==NULL)  return true;
-        if(root->val >= right || root->val <= left)
+        if(root==NULL)
+            return true;
+        if(left!=NULL && root->val <= left->val)
             return false;
+        if(right!=NULL && root->val >= right->val)
+            return false;
+        return isValidBST(root->left, left, root) && isValidBST(root->right, root, right);
         
-        return valid(root->left, left, root->val) &&
-            valid(root->right, root->val, right);
-    }
-    
-    bool isValidBST(TreeNode* root) {
-        ios_base::sync_with_stdio(false);
-        return valid(root, -INF, INF);
     }
 };
-
-
-
-
-
