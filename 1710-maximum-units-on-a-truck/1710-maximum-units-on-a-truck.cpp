@@ -1,26 +1,26 @@
+bool comp(vector<int> &a, vector<int> &b)
+{
+    return a[1] > b[1];
+}
+
 class Solution {
 public:
-    static const bool comp(vector<int> &a, vector<int> &b)
-    {
-        return a[1]>b[1];
-    }
-    int maximumUnits(vector<vector<int>>& boxTypes, int ts) {
+    int maximumUnits(vector<vector<int>>& bt, int ts) {
+        
         int ans = 0;
-        sort(boxTypes.begin(), boxTypes.end(), comp);
-        for(int i=0;i<boxTypes.size();i++)
+        sort(bt.begin(), bt.end(), comp);
+        for(int i = 0; i < bt.size(); i++)
         {
-            if(boxTypes[i][0]<ts){
-                ans += boxTypes[i][0]*boxTypes[i][1];
-                cout << ans << "\n";
-                ts-=boxTypes[i][0];
+            if(bt[i][0] < ts)
+            {
+                ans += (bt[i][0] * bt[i][1]);
+                ts -= bt[i][0];
             }
-            else if(ts>0){
-                ans += ts*boxTypes[i][1];
-                cout << ans << "\n";
-                break;
+            else
+            {
+                ans += ts*bt[i][1];
+                return ans;
             }
-            if(ts==0)
-            break;
         }
         return ans;
     }
