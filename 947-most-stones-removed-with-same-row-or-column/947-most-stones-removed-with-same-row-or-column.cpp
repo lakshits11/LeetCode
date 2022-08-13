@@ -1,41 +1,31 @@
-class Solution
-{
-private:
-    int findParent(int u, vector<int> &parent)
-    {
-        if (parent[u] == -1)
-            return u;
-        return parent[u] = findParent(parent[u], parent);
-    }
-    void unionn(int u, int v, vector<int> &parent, vector<int> &rank)
-    {
-        int nu = findParent(u, parent);
-        int nv = findParent(v, parent);
-        if (nu != nv)
-        {
-            if (rank[nu] < rank[nv])
-                parent[nu] = nv;
-            else if (rank[nu] > rank[nv])
-                parent[nv] = nu;
-            else
-            {
-                parent[nv] = nu;
-                rank[nu]++;
+class Solution {
+public:
+    int removeStones(vector<vector<int>>& stones) {
+        const int n = stones.size();
+        vroot = vector<int>(n);
+        for(int i=0;i<n;i++) vroot[i] = i;
+        for(int i=0;i<n;i++){
+            for(int j=0;j<i;j++){
+                if(stones[i][0] == stones[j][0] || stones[i][1] == stones[j][1])
+                    connect(i,j);
             }
         }
+        int cnt = 0;
+        for(int i=0;i<n;i++) 
+            if(vroot[i] == i) cnt++;
+        return n - cnt;
     }
-
-public:
-    int removeStones(vector<vector<int>> &stones)
-    {
-        //  DSU dsu(20001);
-        vector<int> parent(20005, -1);
-        vector<int> rank(20005, 1);
-        for (vector<int> stone : stones)
-            unionn(stone[0], stone[1] + 10001, parent, rank);
-        set<int> s;
-        for (vector<int> stone : stones)
-            s.insert(findParent(stone[0], parent));
-        return stones.size() - s.size();
+    
+    int getRoot(int i){
+        if(vroot[i] != i){
+            vroot[i] = getRoot(vroot[i]);
+        }
+        return vroot[i];
     }
+    
+    void connect(int i, int j){
+        vroot[getRoot(i)] = getRoot(j); 
+    }
+    
+    vector<int> vroot;
 };
