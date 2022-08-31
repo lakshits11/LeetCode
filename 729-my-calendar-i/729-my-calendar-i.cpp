@@ -7,12 +7,12 @@ public:
     
     bool book(int start, int end) {
         auto slot = s.lower_bound({start, end});
-        if(slot != s.end() && !(slot->first >= end) ||
-          slot != s.begin() && !(prev(slot)->second <= start))
+        if(slot != s.end() && (slot->first < end) || (slot != s.begin()) && (prev(slot)->second > start))
             return false;
         s.insert({start, end});
         return true;
     }
+
 };
 
 /**
