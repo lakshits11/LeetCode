@@ -1,18 +1,16 @@
 class Solution {
 public:
     int maxProduct(vector<int>& arr) {
-        ios_base::sync_with_stdio(false);
-        int res = arr[0];
-        int maxi=res, mini=res;
-        for(int i=1;i<arr.size();++i)
+        int ans = arr[0];
+        int maxi = ans, mini = ans;
+        for(int i=1;i<arr.size();i++)
         {
             if(arr[i]<0)
                 swap(mini, maxi);
-            maxi = max(arr[i], maxi*arr[i]);
-            mini = min(arr[i], mini*arr[i]);
-            
-            res = max(res, maxi);
+            mini = min(arr[i], arr[i]*mini);
+            maxi = max(arr[i], arr[i]*maxi);
+            ans = max({ans, maxi, mini});
         }
-        return res;
+        return ans;
     }
 };
