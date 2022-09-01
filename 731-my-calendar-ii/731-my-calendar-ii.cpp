@@ -1,19 +1,21 @@
-class MyCalendarTwo 
-{
-    map<int, int> mp; // key: time; val: +1 if start, -1 if end
+class MyCalendarTwo {
 public:
-    bool book(int start, int end) 
-    {
-        mp[start]++;
-        mp[end]--;
-        int booked = 0;
-        for (auto it = mp.begin(); it != mp.end(); it++) 
+    map<int, int> u;
+    MyCalendarTwo() {
+        
+    }
+    
+    bool book(int start, int end) {
+        u[start]++;
+        u[end]--;
+        int sum = 0;
+        for(auto &x : u)
         {
-            booked += it->second;
-            if (booked == 3) 
+            sum += x.second;
+            if(sum >= 3)
             {
-                mp[start]--;
-                mp[end]++;
+                u[start]--;
+                u[end]++;
                 return false;
             }
         }
