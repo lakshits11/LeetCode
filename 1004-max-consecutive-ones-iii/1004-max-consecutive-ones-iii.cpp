@@ -1,26 +1,25 @@
 class Solution {
 public:
-    int longestOnes(vector<int>& nums, int k) {
-        int flip = 0;
-        int ans = 0;
-        int i = 0;  // help to move forward
-        int j = 0;  // helper in unflipping
-        
-        while(i < nums.size())
+    int longestOnes(vector<int>& arr, int k) {
+        int n = arr.size();
+        int l = 0, r = 0, ans = -1;
+        while(r < n)
         {
-            if(nums[i] == 0)
-                flip++;
-            while(flip > k)
+            
+            if(arr[r]==0)
+                k--;
+            while(k<0)
             {
-                // unflip previous elements
-                if(nums[j] == 0)
-                    flip--;
-                j++;
+                
+                if(arr[l]==0)
+                    k++;
+                l++;
+                
+                
             }
-            ans = max(ans, (i-j+1));
-            i++;
+            ans = max(r-l+1, ans);
+            r++;
         }
         return ans;
-   
     }
 };
