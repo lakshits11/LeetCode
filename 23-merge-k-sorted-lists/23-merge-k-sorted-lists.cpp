@@ -1,35 +1,48 @@
 class Solution {
+private:
+    // For Approach 3
+    // function to merge 2 sorted linked lists
+    ListNode *merge2Lists(ListNode *a, ListNode *b)
+    {
+        ListNode *res = NULL;
+        if (a == NULL)
+            return b;
+        if (b == NULL)
+            return a;
+
+        if (a->val < b->val)
+        {
+            a->next = merge2Lists(a->next, b);
+            return a;
+        }
+        b->next = merge2Lists(a, b->next);
+        return b;
+    }
+    
 public:
     ListNode* mergeKLists(vector<ListNode*>& lists) {
-        // https://leetcode.com/problems/merge-k-sorted-lists/discuss/1746240/C%2B%2B-Solution-w-Explanation-or-Step-by-step-optimisation-or-Three-different-approaches
-        
-        // Apprach1:
-        // TC: O(NlogN)
-        // SC: O(N)
         int k = lists.size();
-        if(k == 0) return NULL;
-        
-        vector<pair<int, ListNode*>> v;
-        for(int i=0;i<k;i++)
+        if (k == 0)
+            return NULL;
+
+        int start = 0;
+        int last = k - 1;
+        int temp;
+
+        while (last != 0)
         {
-            ListNode* curr = lists[i];
-            while(curr != NULL)
+            start = 0;
+            temp = last;
+            while (start < temp)
             {
-                v.push_back({curr->val, curr});
-                curr = curr->next;
+                // merge them and store in one linked list
+                lists[start] = merge2Lists(lists[start], lists[temp]);
+                start++;
+                temp--;
+                if (start >= temp)
+                    last = temp;
             }
         }
-        
-        if(v.size()==0) return NULL;
-        
-        sort(v.begin(), v.end());
-        
-        for(int i=0;i<v.size()-1;i++)
-        {
-            v[i].second->next = v[i+1].second;
-        }
-        
-        v[v.size()-1].second->next = NULL;
-        return v[0].second;
+        return lists[0];
     }
 };
