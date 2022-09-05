@@ -1,39 +1,35 @@
-class comp{
-    public:
-    bool operator()(const ListNode* a, const ListNode* b)
-    {
-        return a->val > b->val;
-    }
-};
-
 class Solution {
 public:
     ListNode* mergeKLists(vector<ListNode*>& lists) {
+        // https://leetcode.com/problems/merge-k-sorted-lists/discuss/1746240/C%2B%2B-Solution-w-Explanation-or-Step-by-step-optimisation-or-Three-different-approaches
+        
+        // Apprach1:
+        // TC: O(NlogN)
+        // SC: O(N)
         int k = lists.size();
-        if(k==0)
-            return NULL;
-        priority_queue<ListNode*, vector<ListNode*>, comp> pq;
+        if(k == 0) return NULL;
+        
+        vector<pair<int, ListNode*>> v;
         for(int i=0;i<k;i++)
         {
-            if(lists[i]!=NULL)
-                pq.push(lists[i]);
+            ListNode* curr = lists[i];
+            while(curr != NULL)
+            {
+                v.push_back({curr->val, curr});
+                curr = curr->next;
+            }
         }
         
-        ListNode* prev = NULL;
-        ListNode* head = NULL;
-        while(!pq.empty())
+        if(v.size()==0) return NULL;
+        
+        sort(v.begin(), v.end());
+        
+        for(int i=0;i<v.size()-1;i++)
         {
-            ListNode* x = pq.top();
-            pq.pop();
-            if(prev==NULL)
-                head = x;
-            else prev->next = x;
-            
-            prev = x;
-            if(x->next != NULL)
-                pq.push(x->next);
+            v[i].second->next = v[i+1].second;
         }
-        return head;
         
+        v[v.size()-1].second->next = NULL;
+        return v[0].second;
     }
 };
