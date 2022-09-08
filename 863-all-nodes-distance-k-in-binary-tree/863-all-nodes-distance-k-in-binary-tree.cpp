@@ -1,70 +1,71 @@
+// By Lakshit Somani
+#include <bits/stdc++.h>
+using namespace std;
+
+
 class Solution
 {
 public:
-    void markParents(TreeNode *root, unordered_map<TreeNode *, TreeNode *> &parentt)
+    vector<int> distanceK(TreeNode *root, TreeNode *target, int k)
     {
+        vector<int> ans;
+        if (!root)
+            return ans;
+
+        // node, parent
+        unordered_map<TreeNode *, TreeNode *> u;
         queue<TreeNode *> q;
+        set<TreeNode *> s;
         q.push(root);
         while (!q.empty())
         {
-            TreeNode *temp = q.front();
+            TreeNode *curr = q.front();
             q.pop();
-            if (temp->left)
+            if (curr == target)
+                break;
+            if (curr->left)
             {
-                parentt[temp->left] = temp;
-                q.push(temp->left);
+                u[curr->left] = curr;
+                q.push(curr->left);
             }
-            if (temp->right)
+            if (curr->right)
             {
-                parentt[temp->right] = temp;
-                q.push(temp->right);
+                u[curr->right] = curr;
+                q.push(curr->right);
             }
         }
-    }
+        while(!q.empty()) q.pop();
 
-    vector<int> distanceK(TreeNode *root, TreeNode *target, int k)
-    {
-        // Map to keep track of parents
-        unordered_map<TreeNode *, TreeNode *> parentt;
-        markParents(root, parentt);
-
-        unordered_map<TreeNode *, bool> vis;
-        queue<TreeNode *> q;
         q.push(target);
-        vis[target] = true;
-        int curr_level = 0;
-
+        s.insert(target);
+        while (k-- > 0)
+        {
+            if(q.empty()) return ans;
+            int qlen = q.size();
+            for(int i = 0; i < qlen; i++)
+            {
+                TreeNode *curr = q.front();
+                q.pop();
+                if (curr->left && s.find(curr->left) == s.end())
+                {
+                    q.push(curr->left);
+                    s.insert(curr->left);
+                }
+                if (curr->right && s.find(curr->right) == s.end())
+                {
+                    q.push(curr->right);
+                    s.insert(curr->right);
+                }
+                if (u.find(curr) != u.end() && s.find(u[curr]) == s.end())
+                {
+                    q.push(u[curr]);
+                    s.insert(u[curr]);
+                }
+            }
+        }
         while (!q.empty())
         {
-            int qlen = q.size();
-            if (curr_level++ == k)
-                break;
-            for (int i = 0; i < qlen; i++)
-            {
-                TreeNode *current = q.front();
-                q.pop();
-                if (current->left && !vis[current->left])
-                {
-                    q.push(current->left);
-                    vis[current->left] = true;
-                }
-                if (current->right && !vis[current->right])
-                {
-                    q.push(current->right);
-                    vis[current->right] = true;
-                }
-                if (parentt[current] && !vis[parentt[current]])
-                {
-                    q.push(parentt[current]);
-                    vis[parentt[current]] = true;
-                }
-            }
-        }
-
-        vector<int> ans;
-        while(!q.empty())
-        {
-            TreeNode* temp = q.front();
+            TreeNode *temp = q.front();
             q.pop();
             ans.push_back(temp->val);
         }
