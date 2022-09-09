@@ -1,27 +1,48 @@
 class Solution
 {
 public:
+    ListNode *reversee(ListNode *head)
+    {
+        ListNode *curr = head;
+        ListNode *prev = NULL, *next;
+        while (curr)
+        {
+            next = curr->next;
+            curr->next = prev;
+            prev = curr;
+            curr = next;
+        }
+        return prev;
+    }
     ListNode *reverseBetween(ListNode *head, int left, int right)
     {
-        ios_base::sync_with_stdio(false);
-        cin.tie(nullptr);
-        if (head == NULL || left == right)
-            return head;
-        ListNode *tail = NULL, *temp = NULL;
-        ListNode *dummy = new ListNode(0), *prev = dummy;
-        dummy->next = head;
-        for (int i = 0; i < left - 1; i++)
+        ListNode *curr = head, *prev = NULL;
+        int count = 1;
+        while (count != left)
         {
-            prev = prev->next;
+            prev = curr;
+            curr = curr->next;
+            count++;
         }
-        tail = prev->next;
-        for (int i = 0; i < right - left; i++)
+        ListNode *newHead = curr;
+        while (count != right)
         {
-            temp = prev->next;
-            prev->next = tail->next;
-            tail->next = tail->next->next;
-            prev->next->next = temp;
+            count++;
+            curr = curr->next;
         }
-        return dummy->next;
+        ListNode *rest = curr->next;
+        curr->next = NULL;
+        newHead = reversee(newHead);
+        if (prev != NULL)
+            prev->next = newHead;
+        curr = newHead;
+        while (curr->next)
+        {
+            curr = curr->next;
+        }
+        curr->next = rest;
+        if (left == 1)
+            return newHead;
+        return head;
     }
 };
