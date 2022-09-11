@@ -1,10 +1,13 @@
 class Solution {
 public:
     int longestSubarray(vector<int>& nums) {
+        ios_base::sync_with_stdio(false);
+        cin.tie(nullptr);
         int n = nums.size();
         int l = 0, r = 0, len = 0;
-        bool zu = false;int lz=-1;
-        while(r < n)
+        bool zu = false;
+        int lz=-1;
+        for(r=0;r<n;r++)
         {
             if(nums[r]==0 && !zu)
             {
@@ -14,10 +17,9 @@ public:
             else if(nums[r]==0 && zu)
             {
                 l = lz+1;
-                lz=r;
+                lz = r;
             }
             len = max(len, r-l);
-            r++;
         }
         return len;
     }
