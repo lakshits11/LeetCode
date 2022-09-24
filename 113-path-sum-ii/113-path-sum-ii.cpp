@@ -6,10 +6,7 @@ private:
     void pre(TreeNode *root, int sum, int k)
     {
         if(root==NULL)
-        {
-            // temp.pop_back();
             return;
-        }
         sum += root->val;
         temp.push_back(root->val);
         if (sum == k && !root->left && !root->right)
