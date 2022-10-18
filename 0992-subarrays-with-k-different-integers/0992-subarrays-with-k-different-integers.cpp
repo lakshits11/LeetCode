@@ -2,6 +2,11 @@ class Solution {
 private:
     int f(vector<int> &nums, int k)
     {
+        /*
+        atMost(k) is calculating the number of sub-arrays with no more than k different integers. i.e. atmost k integers
+so whenever r is moved to the right, the
+number of sub-arrays with no more than k different numbers increases by (r - l +1)
+        */
         int r = 0, l = 0, ans = 0;
         unordered_map<int, int> m;
         while(r < nums.size())
