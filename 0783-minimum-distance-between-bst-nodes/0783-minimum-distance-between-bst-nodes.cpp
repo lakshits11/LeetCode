@@ -9,14 +9,17 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
-class Solution {
-  public:
-    int res = INT_MAX, pre = -1;
-    int minDiffInBST(TreeNode* root) {
-        if (root->left != NULL) minDiffInBST(root->left);
-        if (pre >= 0) res = min(res, root->val - pre);
-        pre = root->val;
-        if (root->right != NULL) minDiffInBST(root->right);
-        return res;
+
+class Solution
+{
+public:
+    int ans = INT_MAX, prev=-1;
+    int minDiffInBST(TreeNode *root)
+    {
+        if(root->left!=NULL) minDiffInBST(root->left);
+        if(prev>=0) ans = min(ans, root->val-prev);
+        prev = root->val;
+        if(root->right!=NULL) minDiffInBST(root->right);
+        return ans;
     }
 };
