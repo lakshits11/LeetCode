@@ -1,45 +1,38 @@
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ * };
+ */
 class Solution {
 public:
     int widthOfBinaryTree(TreeNode* root) {
-        if(root == NULL)
-            return 0;
-        
-        int res = 1;
+        if(!root) return 0;
+        int ans = 0;
         queue<pair<TreeNode*, int>> q;
-        
-        // I am using intialising list
-        q.push({root, 0});      // also can use make_pair
-        
+        q.push({root, 0});
         while(!q.empty())
         {
-            int cnt = q.size();
-            // start is the index of root node for first level
-            int start = q.front().second;
-            int end = q.back().second;
-            
-            res = max(res,end-start + 1);
-            
-            for(int i = 0; i <cnt; ++i)
+            int sz = q.size();
+            int mini = q.front().second;
+            int f, l;
+            for(int i=0;i<sz;i++)
             {
-                pair<TreeNode*, int> p = q.front();
-                // we will use it while inserting it children
-                // left child will be 2 * idx + 1;
-                // right chils will be 2 * idx + 2;
-                int idx = p.second - start;
-                
+                long currId = q.front().second - mini;
+                TreeNode* curr = q.front().first;
                 q.pop();
-                
-                // if  left child exist
-                if(p.first->left != NULL)
-                    q.push({p.first->left, (long long)2 * idx + 1});
-                
-                // if right child exist
-                if(p.first->right != NULL)
-                    q.push({p.first->right, (long long) 2 * idx + 2});
+                if(i==0) f=currId;
+                if(i==sz-1) l=currId;
+                if(curr->left) q.push({curr->left, currId*2+1});
+                if(curr->right) q.push({curr->right, currId*2+2});
             }
+            ans=max(ans, l-f+1);
         }
-        
-        return res;
-        
+        return ans;
     }
 };
