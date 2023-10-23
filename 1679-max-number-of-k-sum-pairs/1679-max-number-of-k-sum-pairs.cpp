@@ -6,11 +6,10 @@ class Solution {
         for(int i=0;i<nums.size();i++)
         {
             int diff = k - nums[i];
-            if(m.count(diff))
+            if(m[diff]>0)
             {
                 ans++;
-                if(m[diff]==1) m.erase(diff);
-                else m[diff]--;
+                m[diff]--;
             }
             else m[nums[i]]++;
         }
