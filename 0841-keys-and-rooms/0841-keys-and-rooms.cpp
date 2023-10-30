@@ -1,29 +1,36 @@
-class Solution {
-    public:
-    void dfs(int s, vector<vector<int>> &adj, vector<int> &vis)
+class Solution
+{
+public:
+    bool canVisitAllRooms(vector<vector<int>> &rooms)
     {
-        vis[s]=1;
-        for(int i : adj[s])
-        {
-            if(!vis[i])
-            {
-                dfs(i, adj, vis);
-            }
-        } 
-    }
-    bool canVisitAllRooms(vector<vector<int>>& rooms) {
+        ios_base::sync_with_stdio(false);
+        cin.tie(nullptr);
         int n = rooms.size();
-        vector<vector<int>> adj(n);
-        for(int i=0;i<rooms.size();i++)
+        vector<bool> vis(n, 0);
+
+        queue<int> q;
+        q.push(0);
+        vis[0] = true;
+        int totalVisRooms = 1;
+
+        while (!q.empty())
         {
-            for(int j=0;j<rooms[i].size();j++)
+            int sz = q.size();
+            for (int i = 0; i < sz; ++i)
             {
-                adj[i].push_back(rooms[i][j]);
+                int key = q.front();
+                q.pop();
+                for (int &i : rooms[key])
+                {
+                    if (vis[i])
+                        continue;
+                    q.push(i);
+                    vis[i] = true;
+                    totalVisRooms++;
+                }
             }
         }
-        vector<int> vis(n,0);
-        dfs(0, adj, vis);
-        for(int i:vis){if(i==0) return false;}
-        return true;
+
+        return (totalVisRooms==n);
     }
 };
