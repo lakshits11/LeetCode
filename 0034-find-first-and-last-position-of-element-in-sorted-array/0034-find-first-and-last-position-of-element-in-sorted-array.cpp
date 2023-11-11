@@ -1,27 +1,11 @@
-class Solution {
+class Solution
+{
 public:
-    vector<int> searchRange(vector<int>& A, int target) {
-        vector<int> res(2,-1);
-        int n = A.size();
-        if(n==0)    return res;
-        int i=0, j=n-1;
-        while(i<j)
-        {
-            int mid = i+(j-i)/2;
-            if(A[mid]<target)   i=mid+1;
-            else j = mid;
-        }
-        if(A[i]!=target)    return res;
-        else res[0]=i;
-        
-        j=n-1;
-        while(i<j)
-        {
-            int mid = i + (j-i)/2 + 1;
-            if(A[mid]>target)   j=mid-1;
-            else i = mid;
-        }
-        res[1]=j;
-        return res;
+    vector<int> searchRange(vector<int> &arr, int target)
+    {
+        int lb = lower_bound(arr.begin(), arr.end(), target) - arr.begin();
+        if (lb == arr.size() || arr[lb] != target) return {-1, -1};
+        int ub = upper_bound(arr.begin(), arr.end(), target) - arr.begin();
+        return {lb, ub-1};
     }
 };
