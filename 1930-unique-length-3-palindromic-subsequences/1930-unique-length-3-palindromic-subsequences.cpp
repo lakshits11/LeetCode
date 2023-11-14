@@ -1,28 +1,31 @@
 class Solution {
 public:
     int countPalindromicSubsequence(string s) {
-        unordered_set<char> ss;
-        for(char &c : s)
-            ss.insert(c);
+        vector<int> first(26, -1);
+        vector<int> last(26, -1);
+
+        for(int i = 0; i < s.size(); ++i)
+        {
+            int curr = s[i]-'a';
+            if(first[curr] == -1) first[curr] = i;
+            last[curr] = i;
+        }
         
         int ans = 0;
-        for(char c : ss)
+        for(int i = 0; i < 26; ++i)
         {
-            int i = -1, j = 0;
+            // element does not exist
+            if(first[i] == -1) continue;
             
-            for(int k = 0; k < s.size(); k++)
-            {
-                if(s[k] == c){
-                    if(i==-1) i=k;
-                    j=k;
-                }
-            }
-            
+            // else ...
             unordered_set<char> bw;
-            for(int k = i+1; k < j; k++)
-                bw.insert(s[k]);
+            for(int j = first[i]+1; j < last[i]; ++j)
+            {
+                bw.insert(s[j]);
+            }
             ans += bw.size();
         }
+        
         return ans;
     }
 };
