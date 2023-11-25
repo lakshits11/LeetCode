@@ -1,8 +1,10 @@
+static const auto speedup = []() {
+   std::ios::sync_with_stdio(false); std::cin.tie(nullptr); return 0;
+}();
+
 class Solution {
 public:
 	int minimumJumps(vector<int>& forbidden, int a, int b, int x) {
-        ios_base::sync_with_stdio(false);
-        cin.tie(nullptr);
 		unordered_set<int> forbi(forbidden.begin(), forbidden.end());
 		vector<vector<int>> visited(2,vector<int>(6000));
 		// visited array has two states:
