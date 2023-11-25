@@ -1,6 +1,8 @@
 class Solution {
 public:
 	int minimumJumps(vector<int>& forbidden, int a, int b, int x) {
+        ios_base::sync_with_stdio(false);
+        cin.tie(nullptr);
 		unordered_set<int> forbi(forbidden.begin(), forbidden.end());
 		vector<vector<int>> visited(2,vector<int>(6000));
 		// visited array has two states:
@@ -29,7 +31,7 @@ public:
 					qu.push({forward,false});
 					visited[0][forward] = 1;
 				}
-				if(backward >=0 && visited[1][backward] == 0 && !forbi.count(backward) && !flag) {
+				if(!flag && backward >=0 && visited[1][backward] == 0 && !forbi.count(backward)) {
 					qu.push({backward,true});
 					visited[1][backward] = 1;
 				}
