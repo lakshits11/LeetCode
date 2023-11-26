@@ -6,18 +6,22 @@ public:
         int m = mx.size();
         int n = mx[0].size();
         int ans = 0;
-        
+        vector<int> prev(n, 0);
+        vector<int> curr(n, 0);
         for(int r = 0; r < m; r++)
         {
+            curr = mx[r];
             for(int c = 0; c < n; c++)
             {
-                if(mx[r][c]!=0 && r>0)
-                    mx[r][c] += mx[r-1][c];
+                if(curr[c] != 0){
+                    curr[c] += prev[c];
+                }
             }
-            vector<int> currRow = mx[r];
-            sort(currRow.begin(), currRow.end(), greater());
+            vector<int> sortedRow = curr;
+            sort(sortedRow.begin(), sortedRow.end(), greater());
             for(int i = 0; i < n; i++)
-                ans = max(ans, currRow[i]*(i+1));
+                ans = max(ans, sortedRow[i]*(i+1));
+            prev = curr;
         }
         
         return ans;
