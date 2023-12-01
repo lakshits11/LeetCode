@@ -1,52 +1,49 @@
-class Solution {
+class Solution
+{
 public:
-    class tuple
+    int shortestPathLength(vector<vector<int>> &g)
     {
-        public:
-        int node, mask,cost;
-        tuple(int node, int mask, int cost)
-        {
-            this->node = node;
-            this->mask = mask;
-            this->cost = cost;
-        }
-    };
-    
-    int shortestPathLength(vector<vector<int>>& graph) {
         ios_base::sync_with_stdio(false);
         cin.tie(nullptr);
-        int n = graph.size();
-        queue<tuple> q;
+        int n = g.size();
+        int all = (1 << n) - 1;
+        // <current node, <current distance till now, current mask>>
+        queue<pair<int, pair<int, int>>> q;
+        // NOTE: current mask will be 1<<i
+
+        // <node, mask>
+        // visited basically is storing {node, combination of nodes visited to reach that node}
         set<pair<int, int>> vis;
-        int all = (1<<n)-1;
-        for(int i = 0; i < n; ++i)
+
+        // we will be adding all the nodes in the queue
+        for (int i = 0; i < n; ++i)
         {
-            int maskValue = 1<<i; // 2^i
-            tuple thisNode(i, maskValue, 1);
-            q.push(thisNode);
-            vis.insert({i, maskValue});
+            int mask = (1 << i);
+            q.push({i, {0, mask}});
+            // node i and its mask are being inserted into vis set
+            vis.insert({i, mask});
         }
-        
-        while(!q.empty())
+
+        while (!q.empty())
         {
-            tuple curr = q.front();
+            pair<int, pair<int, int>> node = q.front();
             q.pop();
-            if(curr.mask == all)
-                return curr.cost-1;
-            
-            for(int &adjNode : graph[curr.node])
+            int nodeVal = node.first, currDis = node.second.first, currMask = node.second.second;
+            for (auto nbr : g[nodeVal])
             {
-                int currMask = curr.mask;
-                currMask = currMask | (1<<adjNode);
-                tuple ThisNode(adjNode, currMask, curr.cost+1);
-                if(vis.find({adjNode, currMask}) == vis.end())
+                int newMask = currMask | (1 << nbr);
+                if (newMask == all)
+                    return currDis + 1;
+                else if (vis.count({nbr, newMask}))
+                    continue;
+                else
                 {
-                    vis.insert({adjNode, currMask});
-                    q.push(ThisNode);
+                    q.push({nbr, {currDis + 1, newMask}});
+                    vis.insert({nbr, newMask});
                 }
             }
         }
-        
-        return -1;
+
+        return 0;
     }
 };
