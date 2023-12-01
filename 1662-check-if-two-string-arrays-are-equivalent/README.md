@@ -2,7 +2,7 @@
 
 <p>A string is <strong>represented</strong> by an array if the array elements concatenated <strong>in order</strong> forms the string.</p>
 
-<p>&nbsp;</p>
+<p dm7qljzf9="" sk5rn5sux="">&nbsp;</p>
 <p><strong class="example">Example 1:</strong></p>
 
 <pre><strong>Input:</strong> word1 = ["ab", "c"], word2 = ["a", "bc"]
@@ -24,7 +24,7 @@ The strings are the same, so return true.</pre>
 <strong>Output:</strong> true
 </pre>
 
-<p>&nbsp;</p>
+<p dm7qljzf9="" sk5rn5sux="">&nbsp;</p>
 <p><strong>Constraints:</strong></p>
 
 <ul>
