@@ -1,6 +1,7 @@
 class Solution {
 public:
     bool arrayStringsAreEqual(vector<string>& word1, vector<string>& word2) {
+        ios_base::sync_with_stdio(false);cin.tie(nullptr);
         int i = 0, j = 0; // word pointers
         int m = 0, n = 0; // char pointers
         
