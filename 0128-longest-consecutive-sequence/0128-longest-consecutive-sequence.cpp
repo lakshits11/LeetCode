@@ -3,21 +3,30 @@ public:
     int longestConsecutive(vector<int>& nums) {
         ios_base::sync_with_stdio(false);cin.tie(nullptr);
         int n = nums.size();
-        if(n==0) return 0;
-        sort(nums.begin(), nums.end());
-        int ccs = 1;
-        int lcs = 0;
-        for(int i=1;i<n;i++)
+        unordered_map<int, bool> u;
+        for(int i=0;i<n;++i)
         {
-            if(nums[i]!=nums[i-1])
+            u[nums[i]] = true;
+        }
+        for(int i=0;i<n;++i)
+        {
+            if(u.count(nums[i]-1)>0) u[nums[i]] = false;
+        }
+        int ans = 0;
+        for(int i=0;i<n;++i)
+        {
+            if(u[nums[i]])
             {
-                if(nums[i]==nums[i-1]+1) ccs++;
-                else {
-                    lcs = max(lcs, ccs);
-                    ccs = 1;
+                int j=0, count = 0;
+                while(u.count(nums[i]+j)>0) // i.e. if nums[i]+j exists in array
+                {
+                    ++j;
+                    ++count;
                 }
+                if(count > ans)
+                    ans = count;
             }
         }
-        return max(lcs, ccs);
+        return ans;
     }
 };
