@@ -2,7 +2,7 @@
 
 <p>Return <em>the max sliding window</em>.</p>
 
-<p>&nbsp;</p>
+<p chyxpuykv="" y0w2l88g1="">&nbsp;</p>
 <p><strong class="example">Example 1:</strong></p>
 
 <pre><strong>Input:</strong> nums = [1,3,-1,-3,5,3,6,7], k = 3
@@ -24,7 +24,7 @@ Window position                Max
 <strong>Output:</strong> [1]
 </pre>
 
-<p>&nbsp;</p>
+<p chyxpuykv="" y0w2l88g1="">&nbsp;</p>
 <p><strong>Constraints:</strong></p>
 
 <ul>
