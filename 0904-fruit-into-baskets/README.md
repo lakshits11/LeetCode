@@ -10,7 +10,7 @@
 
 <p>Given the integer array <code>fruits</code>, return <em>the <strong>maximum</strong> number of fruits you can pick</em>.</p>
 
-<p>&nbsp;</p>
+<p jx1zqjt2h="" vndme9udb="">&nbsp;</p>
 <p><strong class="example">Example 1:</strong></p>
 
 <pre><strong>Input:</strong> fruits = [<u>1,2,1</u>]
@@ -34,7 +34,7 @@ If we had started at the first tree, we would only pick from trees [0,1].
 If we had started at the first tree, we would only pick from trees [1,2].
 </pre>
 
-<p>&nbsp;</p>
+<p jx1zqjt2h="" vndme9udb="">&nbsp;</p>
 <p><strong>Constraints:</strong></p>
 
 <ul>
