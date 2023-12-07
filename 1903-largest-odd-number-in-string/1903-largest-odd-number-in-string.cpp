@@ -1,6 +1,7 @@
 class Solution {
 public:
     string largestOddNumber(string num) {
+        ios_base::sync_with_stdio(false);cin.tie(nullptr);
         int n = num.length();
         for (int i = n - 1; i >= 0; i--) {
             if ((num[i] - '0') % 2 == 1) {
