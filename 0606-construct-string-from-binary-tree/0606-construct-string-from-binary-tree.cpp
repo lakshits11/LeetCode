@@ -13,7 +13,6 @@
 class Solution {
 public:
     string t2s(TreeNode* root) {
-        ios_base::sync_with_stdio(false);cin.tie(nullptr);
         if(root==NULL) return "";
         if(!root->left && !root->right)
             return (to_string(root->val)+"");
@@ -23,6 +22,7 @@ public:
     }
     string tree2str(TreeNode* root)
     {
+        ios_base::sync_with_stdio(false);cin.tie(nullptr);
         return t2s(root);
     }
 };
