@@ -1,3 +1,7 @@
+static const auto speedup = []() -> int{
+    std::ios::sync_with_stdio(false);std::cin.tie(nullptr);return 0;
+}();
+
 /**
  * Definition for a binary tree node.
  * struct TreeNode {
@@ -22,7 +26,6 @@ public:
     }
     string tree2str(TreeNode* root)
     {
-        ios_base::sync_with_stdio(false);cin.tie(nullptr);
         return t2s(root);
     }
 };
