@@ -5,14 +5,19 @@ static const auto speedup = []() -> int{
 }();
 
 long long pos[100001];
+
 class Solution 
 {
 public:
     long long maximumSubarraySum(vector<int>& nums, int k) 
     {
         long long res = 0, cur = 0, dup = -1;
-        // vector<long long> pos(100001,-1); // to store last seen position of an element
+        
+        // pos: to store last seen position of an element
+        
+        // initializing all positions as -1
         memset(pos, -1, sizeof(pos));
+        
         for (int i = 0; i < nums.size(); ++i)
         {
             cur += nums[i];
