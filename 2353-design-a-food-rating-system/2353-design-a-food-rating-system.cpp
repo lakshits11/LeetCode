@@ -13,9 +13,9 @@ struct comp{
 
 class FoodRatings {
 public:
-    map<string, int> r;
+    unordered_map<string, int> r;
     map<string, set<pair<int, string>, comp>> m;
-    map<string, string> c;
+    unordered_map<string, string> c;
     
     FoodRatings(vector<string>& food, vector<string>& cuisines, vector<int>& ratings) {
         int n = food.size();
