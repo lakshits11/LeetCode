@@ -2,38 +2,32 @@ static const auto speedup = []() -> int{
     std::ios::sync_with_stdio(false);std::cin.tie(nullptr);return 0;
 }();
 
-struct comp{
-    bool operator()(const pair<int, string> &a, const pair<int, string> &b)const
-    {
-        if(a.first == b.first)
-            return a.second < b.second;
-        return a.first > b.first;
-    }
-};
-
 class FoodRatings {
+private:
+
+    unordered_map<string,string> foodsToCuisines{};
+    unordered_map<string,int> foodsToRatings{};
+    unordered_map<string,set<pair<int,string>>> cuisineRatings{};
+
 public:
-    unordered_map<string, int> r;
-    map<string, set<pair<int, string>, comp>> m;
-    unordered_map<string, string> c;
-    
-    FoodRatings(vector<string>& food, vector<string>& cuisines, vector<int>& ratings) {
-        int n = food.size();
-        for(int i=0;i<n;i++)
-        {
-            r[food[i]] = ratings[i];
-            m[cuisines[i]].insert({ratings[i], food[i]});
-            c[food[i]] = cuisines[i];
+
+    FoodRatings(vector<string>& foods, vector<string>& cuisines, vector<int>& ratings) {
+        for (int i = 0; i < foods.size(); i++) {
+            foodsToCuisines[foods[i]] = cuisines[i];
+            foodsToRatings[foods[i]] = ratings[i];
+            cuisineRatings[cuisines[i]].insert(make_pair(-ratings[i], foods[i]));
         }
     }
     
     void changeRating(string food, int newRating) {
-        m[c[food]].erase({r[food], food});
-        m[c[food]].insert({newRating, food});
-        r[food] = newRating;
+        int oldRating = foodsToRatings[food];
+        string& cuisine = foodsToCuisines[food];
+        cuisineRatings[cuisine].erase(make_pair(-oldRating, food));
+        foodsToRatings[food] = newRating;
+        cuisineRatings[cuisine].insert(make_pair(-newRating, food));
     }
     
     string highestRated(string cuisine) {
-        return (*m[cuisine].begin()).second;
+        return cuisineRatings[cuisine].begin()->second;
     }
 };
