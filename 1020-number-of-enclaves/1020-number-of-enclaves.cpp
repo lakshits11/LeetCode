@@ -1,41 +1,47 @@
+static const auto speedup = []() -> int{
+    std::ios::sync_with_stdio(false);std::cin.tie(nullptr);return 0;
+}();
+
 class Solution {
-public:
+    public:
+    int dir[5] = {-1, 0, 1, 0, -1};
+
     void dfs(vector<vector<int>> &grid, int i, int j)
     {
-        if(i<0 || j<0 || i>=grid.size() || j>=grid[0].size())
-            return;
-        
-        if(grid[i][j]==0)   return;
         grid[i][j]=0;
-        
-        dfs(grid, i+1, j);
-        dfs(grid, i-1, j);
-        dfs(grid, i, j+1);
-        dfs(grid, i, j-1);
-    }
-    
-    int numEnclaves(vector<vector<int>>& grid) {
-        ios_base::sync_with_stdio(false);
-        cin.tie(nullptr);
-        int ans = 0;
-        for(int i=0;i<grid.size();i++)
+        for(int k=0;k<4;++k)
         {
-            for(int j=0;j<grid[0].size();j++)
-            {
-                if(i==0 || j==0 || i==grid.size()-1 || j==grid[0].size()-1){
-                    dfs(grid, i, j);
-                }
+            int ni=i+dir[k], nj=j+dir[k+1];
+            if(ni>=0 && nj>=0 && ni<grid.size() && nj<grid[0].size() && grid[ni][nj]==1){
+                dfs(grid, ni, nj);
             }
+        }
+    }
+
+    int numEnclaves(vector<vector<int>>& grid) {
+        int m=grid.size(), n = grid[0].size();
+
+        for(int i=0;i<m;i++)
+        {
+            if(grid[i][0]==1)
+                dfs(grid, i, 0);
+            if(grid[i][n-1]==1)
+                dfs(grid, i, n-1);
         }
 
-        for(int i=0;i<grid.size();i++)
+        for(int j=0;j<n;j++)
         {
-            for(int j=0;j<grid[0].size();j++)
-            {
-                ans += grid[i][j];
+            if(grid[0][j]==1)
+                dfs(grid,0,j);
+            if(grid[m-1][j] == 1)
+                dfs(grid, m-1, j);
+        }
+        int ans=0;
+        for(int i=0;i<m;i++){
+            for(int j=0;j<n;j++){
+                if(grid[i][j]==1)++ans;
             }
         }
-            
         return ans;
     }
 };
