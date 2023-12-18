@@ -1,45 +1,35 @@
-class Solution
-{
+static const auto speedup = []() -> int{
+    std::ios::sync_with_stdio(false);std::cin.tie(nullptr);return 0;
+}();
+
+class Solution {
 public:
-    vector<vector<int>> updateMatrix(vector<vector<int>> &m)
-    {
-        ios_base::sync_with_stdio(false);
-        cin.tie(nullptr);
-        int r = m.size();
-        if (r == 0)
-            return m;
-        int c = m[0].size();
-        vector<vector<int>> ans(r, vector<int>(c, INT_MAX-100000));
-
-        // First Pass: Check for left and top
-        for (int i = 0; i < r; i++)
+    vector<vector<int>> updateMatrix(vector<vector<int>>& mat) {
+        int m = mat.size(), n = mat[0].size(), INF = m + n;
+        for(int i=0;i<m;++i)
         {
-            for (int j = 0; j < c; j++)
+            for(int j=0;j<n;++j)
             {
-                if (m[i][j] == 0)
-                    ans[i][j] = 0;
-                else
-                {
-                    if (i > 0)
-                        ans[i][j] = min(ans[i][j], ans[i - 1][j] + 1);
-                    if (j > 0)
-                        ans[i][j] = min(ans[i][j], ans[i][j - 1] + 1);
-                }
+                if(mat[i][j] == 0) continue;
+                int top = INF, left = INF;
+                if(i-1>=0) top=mat[i-1][j];
+                if(j-1>=0) left=mat[i][j-1];
+                mat[i][j] = min(top, left) + 1;
             }
         }
-
-        // Second Pass : Check for right and bottom
-        for (int i = r - 1; i >= 0; i--)
+        
+        for(int i=m-1;i>=0;--i)
         {
-            for (int j = c - 1; j >= 0; j--)
+            for(int j=n-1;j>=0;--j)
             {
-                if (i < r - 1)
-                    ans[i][j] = min(ans[i][j],1+ ans[i + 1][j]);
-                if (j < c - 1)
-                    ans[i][j] = min(ans[i][j],1+ ans[i][j + 1]);
+                if(mat[i][j]==0) continue;
+                int bottom=INF, right=INF;
+                if(i+1<m) bottom=mat[i+1][j];
+                if(j+1<n) right=mat[i][j+1];
+                mat[i][j] = min(min(right, bottom)+1, mat[i][j]);
             }
         }
-
-        return ans;
+        
+        return mat;
     }
 };
