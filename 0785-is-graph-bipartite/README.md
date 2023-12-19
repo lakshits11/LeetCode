@@ -11,7 +11,7 @@
 
 <p>Return <code>true</code><em> if and only if it is <strong>bipartite</strong></em>.</p>
 
-<p>&nbsp;</p>
+<p vn8vg3njt="" o1j2tf0kh="">&nbsp;</p>
 <p><strong class="example">Example 1:</strong></p>
 <img alt="" src="https://assets.leetcode.com/uploads/2020/10/21/bi2.jpg" style="width: 222px; height: 222px;">
 <pre><strong>Input:</strong> graph = [[1,2,3],[0,2],[0,1,3],[0,2]]
@@ -24,7 +24,7 @@
 <strong>Output:</strong> true
 <strong>Explanation:</strong> We can partition the nodes into two sets: {0, 2} and {1, 3}.</pre>
 
-<p>&nbsp;</p>
+<p vn8vg3njt="" o1j2tf0kh="">&nbsp;</p>
 <p><strong>Constraints:</strong></p>
 
 <ul>
