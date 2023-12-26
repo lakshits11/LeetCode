@@ -2,7 +2,7 @@
 
 <p>The solution set <strong>must not</strong> contain duplicate subsets. Return the solution in <strong>any order</strong>.</p>
 
-<p bupgjb5wo="" byokjn4hn="">&nbsp;</p>
+<p tnnac4fwz="" rg1rgpvqz="">&nbsp;</p>
 <p><strong class="example">Example 1:</strong></p>
 
 <pre><strong>Input:</strong> nums = [1,2,3]
@@ -15,7 +15,7 @@
 <strong>Output:</strong> [[],[0]]
 </pre>
 
-<p bupgjb5wo="" byokjn4hn="">&nbsp;</p>
+<p tnnac4fwz="" rg1rgpvqz="">&nbsp;</p>
 <p><strong>Constraints:</strong></p>
 
 <ul>
