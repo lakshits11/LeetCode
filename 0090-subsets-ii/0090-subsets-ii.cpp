@@ -1,13 +1,13 @@
 class Solution {
 public:
-    set<vector<int>> s;
     vector<vector<int>> ans;
     
     void dfs(int i, vector<int> &temp, vector<int> &nums)
     {
-        s.insert(temp);
+        ans.push_back(temp);
         for(int j=i;j<nums.size();j++)
         {
+            if(j>i && nums[j]==nums[j-1]) continue;
             temp.push_back(nums[j]);
             dfs(j+1, temp, nums);
             temp.pop_back();
@@ -18,8 +18,6 @@ public:
         vector<int> temp;
         sort(nums.begin(), nums.end());
         dfs(0, temp, nums);
-        for(const auto &it : s)
-            ans.push_back(it);
         return ans;
     }
 };
