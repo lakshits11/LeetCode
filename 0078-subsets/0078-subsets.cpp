@@ -9,7 +9,7 @@ public:
     void dfs(int i, vector<int> &temp, vector<int> &nums)
     {
         ans.push_back(temp);
-        for(int j = i; j < nums.size(); j++)
+        for(int j=i; j < nums.size(); j++)
         {
             temp.push_back(nums[j]);
             dfs(j+1, temp, nums);
