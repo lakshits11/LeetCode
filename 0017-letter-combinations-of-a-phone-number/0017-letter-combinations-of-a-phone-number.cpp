@@ -1,24 +1,27 @@
 class Solution {
 public:
-    const vector<string> pad = {"", "", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"};
-    vector<string> letterCombinations(string digits) {
-        ios_base::sync_with_stdio(false);
-        cin.tie(nullptr);
-        if(digits.empty()) return {};
-        vector<string> res;
-        res.push_back("");
-        for(char digit : digits)
+    vector<string>v= {"", "", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"}; 
+    vector<string> ans;
+    
+    void f(int index, string &digits, string temp)
+    {
+        if(index == digits.size())
         {
-            vector<string> temp;
-            for(auto c : pad[digit-'0'])
-            {
-                for(auto x : res)
-                {
-                    temp.push_back(x+c);
-                }
-            }
-            res.swap(temp);
+            ans.push_back(temp);
+            return;
         }
-        return res;
+        
+        string s = v[digits[index]-'0'];
+        for(int i = 0; i < s.size(); i++)
+        {
+            f(index+1, digits, temp+s[i]);
+        }
+    }
+    
+    
+    vector<string> letterCombinations(string digits) {
+        if(digits == "") return ans;
+        f(0, digits, "");
+        return ans;
     }
 };
