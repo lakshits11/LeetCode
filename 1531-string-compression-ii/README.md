@@ -6,7 +6,7 @@
 
 <p>Find the <em>minimum length of the run-length encoded&nbsp;version of </em><code>s</code><em> after deleting at most </em><code>k</code><em> characters</em>.</p>
 
-<p>&nbsp;</p>
+<p yw8xxu4id="" ro0voo6d1="">&nbsp;</p>
 <p><strong class="example">Example 1:</strong></p>
 
 <pre><strong>Input:</strong> s = "aaabcccd", k = 2
@@ -27,7 +27,7 @@
 <strong>Explanation: </strong>Since k is zero, we cannot delete anything. The compressed string is "a11" of length 3.
 </pre>
 
-<p>&nbsp;</p>
+<p yw8xxu4id="" ro0voo6d1="">&nbsp;</p>
 <p><strong>Constraints:</strong></p>
 
 <ul>
