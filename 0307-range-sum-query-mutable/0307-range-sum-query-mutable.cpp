@@ -3,10 +3,10 @@ static const auto speedup = []() -> int{
 }();
 
 #define ll long long
+int seg[120005];
 class NumArray {
 public:
     
-    vector<int> seg;
     int n;
     
     void build(ll index, int lo, int hi, vector<int> &nums)
@@ -53,7 +53,7 @@ public:
     
     NumArray(vector<int>& nums) {
         n = nums.size();
-        seg = vector<int>(4*n,0);
+        memset(seg, 0, sizeof(seg));
         build(0, 0, n-1, nums);
     }
     
