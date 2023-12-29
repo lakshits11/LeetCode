@@ -6,7 +6,7 @@
 
 <p>Return <em>the minimum difficulty of a job schedule</em>. If you cannot find a schedule for the jobs return <code>-1</code>.</p>
 
-<p>&nbsp;</p>
+<p ee9fsd7f3="" thj7zof69="">&nbsp;</p>
 <p><strong class="example">Example 1:</strong></p>
 <img alt="" src="https://assets.leetcode.com/uploads/2020/01/16/untitled.png" style="width: 365px; height: 370px;">
 <pre><strong>Input:</strong> jobDifficulty = [6,5,4,3,2,1], d = 2
@@ -30,7 +30,7 @@ The difficulty of the schedule = 6 + 1 = 7
 <strong>Explanation:</strong> The schedule is one job per day. total difficulty will be 3.
 </pre>
 
-<p>&nbsp;</p>
+<p ee9fsd7f3="" thj7zof69="">&nbsp;</p>
 <p><strong>Constraints:</strong></p>
 
 <ul>
