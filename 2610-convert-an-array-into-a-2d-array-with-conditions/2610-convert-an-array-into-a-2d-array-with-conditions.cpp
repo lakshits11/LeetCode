@@ -1,27 +1,23 @@
+static const auto speedup = []() -> int{
+    std::ios::sync_with_stdio(false);std::cin.tie(nullptr);return 0;
+}();
+
 class Solution {
 public:
     vector<vector<int>> findMatrix(vector<int>& nums) {
-        int count[201] = {};
-        memset(count, 0, sizeof(count));
-        for(int &i:nums)
-        {
-            ++count[i];
-        }
+        vector<int> freq(nums.size() + 1);
+        
         vector<vector<int>> ans;
-        vector<int> temp;
-        while(true)
-        {
-            for(int i=1;i<201;i++)
-            {
-                if(count[i]>0){
-                    temp.push_back(i);
-                    --count[i];
-                }
+        for (int c : nums) {
+            if (freq[c] >= ans.size()) {
+                ans.push_back({});
             }
-            if(temp.size()==0) return ans;
-            ans.push_back(temp);
-            temp={};
+            
+            // Store the integer in the list corresponding to its current frequency.
+            ans[freq[c]].push_back(c);
+            freq[c]++;
         }
+        
         return ans;
     }
 };
