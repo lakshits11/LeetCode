@@ -2,7 +2,7 @@
 
 <p>Each time you can either climb <code>1</code> or <code>2</code> steps. In how many distinct ways can you climb to the top?</p>
 
-<p>&nbsp;</p>
+<p kfg0zpo54="" u0qh0kqkv="">&nbsp;</p>
 <p><strong class="example">Example 1:</strong></p>
 
 <pre><strong>Input:</strong> n = 2
@@ -22,7 +22,7 @@
 3. 2 steps + 1 step
 </pre>
 
-<p>&nbsp;</p>
+<p kfg0zpo54="" u0qh0kqkv="">&nbsp;</p>
 <p><strong>Constraints:</strong></p>
 
 <ul>
