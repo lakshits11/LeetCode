@@ -1,10 +1,13 @@
+static const auto speedup = []() -> int{
+    std::ios::sync_with_stdio(false);std::cin.tie(nullptr);return 0;
+}();
+
 #define ull unsigned long long
 class Solution
 {
 public:
     int numDistinct(string s, string t)
     {
-        ios_base::sync_with_stdio(false);cin.tie(nullptr);
         int n = s.length(), m = t.length();
         vector<ull> dp(m + 1, 0);
 
