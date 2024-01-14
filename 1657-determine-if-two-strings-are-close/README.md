@@ -18,7 +18,7 @@
 
 <p>Given two strings, <code>word1</code> and <code>word2</code>, return <code>true</code><em> if </em><code>word1</code><em> and </em><code>word2</code><em> are <strong>close</strong>, and </em><code>false</code><em> otherwise.</em></p>
 
-<p>&nbsp;</p>
+<p m7ktrzprm="" t4gatg2ad="">&nbsp;</p>
 <p><strong class="example">Example 1:</strong></p>
 
 <pre><strong>Input:</strong> word1 = "abc", word2 = "bca"
@@ -45,11 +45,11 @@ Apply Operation 1: "ca<u>b</u>bb<u>a</u>" -&gt; "ca<u>a</u>bb<u>b</u>"
 Apply Operation 2: "<u>baa</u>ccc" -&gt; "<u>abb</u>ccc"
 </pre>
 
-<p>&nbsp;</p>
+<p m7ktrzprm="" t4gatg2ad="">&nbsp;</p>
 <p><strong>Constraints:</strong></p>
 
 <ul>
 	<li><code>1 &lt;= word1.length, word2.length &lt;= 10<sup>5</sup></code></li>
-	<li><code>word1</code> and <code>word2</code> contain&nbsp;only lowercase English letters.</li>
+	<li><code>word1</code> and <code>word2</code> contain only lowercase English letters.</li>
 </ul>
 </div>
