@@ -16,7 +16,7 @@
 	<li>The testcases will be generated such that <strong>no</strong> two matches will have the <strong>same</strong> outcome.</li>
 </ul>
 
-<p>&nbsp;</p>
+<p vunsykhuz="" rbem4gq3s="">&nbsp;</p>
 <p><strong class="example">Example 1:</strong></p>
 
 <pre><strong>Input:</strong> matches = [[1,3],[2,3],[3,6],[5,6],[5,7],[4,5],[4,8],[4,9],[10,4],[10,9]]
@@ -38,7 +38,7 @@ Players 3 and 4 each have lost two matches.
 Thus, answer[0] = [1,2,5,6] and answer[1] = [].
 </pre>
 
-<p>&nbsp;</p>
+<p vunsykhuz="" rbem4gq3s="">&nbsp;</p>
 <p><strong>Constraints:</strong></p>
 
 <ul>
