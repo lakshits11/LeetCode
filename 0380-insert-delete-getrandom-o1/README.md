@@ -9,7 +9,7 @@
 
 <p>You must implement the functions of the class such that each function works in&nbsp;<strong>average</strong>&nbsp;<code>O(1)</code>&nbsp;time complexity.</p>
 
-<p>&nbsp;</p>
+<p j652p6ucy="" a5at69izf="">&nbsp;</p>
 <p><strong class="example">Example 1:</strong></p>
 
 <pre><strong>Input</strong>
@@ -29,7 +29,7 @@ randomizedSet.insert(2); // 2 was already in the set, so return false.
 randomizedSet.getRandom(); // Since 2 is the only number in the set, getRandom() will always return 2.
 </pre>
 
-<p>&nbsp;</p>
+<p j652p6ucy="" a5at69izf="">&nbsp;</p>
 <p><strong>Constraints:</strong></p>
 
 <ul>
