@@ -1,20 +1,25 @@
+static const auto speedup = []() -> int{
+    std::ios::sync_with_stdio(false);std::cin.tie(nullptr);return 0;
+}();
+
 class Solution {
 public:
     bool uniqueOccurrences(vector<int>& arr) {
-        // Store the frequency of elements in the unordered map.
-        unordered_map<int, int> freq;
-        for (int num : arr) {
-            freq[num]++;
+        int cnt[2001];
+        memset(cnt, 0, sizeof(cnt));
+        for(int n : arr)
+        {
+            ++cnt[n+1000];
         }
-        
-        // Store the frequency count of elements in the unordered set.
-        unordered_set<int> freqSet;
-        for (auto [key, value] : freq) {
-            freqSet.insert(value);
+        unordered_set<int> s;
+        int temp = 0;
+        for(int i=0;i<2001;++i)
+        {
+            if(cnt[i]!=0){
+                s.insert(cnt[i]);
+                temp++;
+            }
         }
-        
-        // If the set size is equal to the map size, 
-        // It implies frequency counts are unique.
-        return freqSet.size() == freq.size();
+        return s.size()==temp;
     }
 };
