@@ -8,29 +8,29 @@
 
 <p>A <strong>common subsequence</strong> of two strings is a subsequence that is common to both strings.</p>
 
-<p>&nbsp;</p>
-<p><strong>Example 1:</strong></p>
+<p bci8er45c="" scz84fy23="">&nbsp;</p>
+<p><strong class="example">Example 1:</strong></p>
 
 <pre><strong>Input:</strong> text1 = "abcde", text2 = "ace" 
 <strong>Output:</strong> 3  
 <strong>Explanation:</strong> The longest common subsequence is "ace" and its length is 3.
 </pre>
 
-<p><strong>Example 2:</strong></p>
+<p><strong class="example">Example 2:</strong></p>
 
 <pre><strong>Input:</strong> text1 = "abc", text2 = "abc"
 <strong>Output:</strong> 3
 <strong>Explanation:</strong> The longest common subsequence is "abc" and its length is 3.
 </pre>
 
-<p><strong>Example 3:</strong></p>
+<p><strong class="example">Example 3:</strong></p>
 
 <pre><strong>Input:</strong> text1 = "abc", text2 = "def"
 <strong>Output:</strong> 0
 <strong>Explanation:</strong> There is no such common subsequence, so the result is 0.
 </pre>
 
-<p>&nbsp;</p>
+<p bci8er45c="" scz84fy23="">&nbsp;</p>
 <p><strong>Constraints:</strong></p>
 
 <ul>
