@@ -1,3 +1,7 @@
+static const auto speedup = []() -> int{
+    std::ios::sync_with_stdio(false);std::cin.tie(nullptr);return 0;
+}();
+
 class Solution {
 public:
     int kInversePairs(int n, int k) {
