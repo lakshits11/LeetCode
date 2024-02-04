@@ -1,42 +1,66 @@
-struct TrieNode {
-    TrieNode* children[26] = {};
-    string* word;
-    void addWord(string& word) {
-        TrieNode* cur = this;
-        for (char c : word) {
-            c -= 'a';
-            if (cur->children[c] == nullptr) cur->children[c] = new TrieNode();
-            cur = cur->children[c];
-        }
-        cur->word = &word;
+// By Lakshit Somani
+#include <bits/stdc++.h>
+using namespace std;
+
+struct TrieNode
+{
+    TrieNode *arr[26];
+    bool isEnd;
+    string *word;
+
+    TrieNode()
+    {
+        isEnd = false;
+        memset(arr, 0, sizeof(arr));
+        word = nullptr;
     }
 };
 
-class Solution {
+int dir[5] = {0, 1, 0, -1, 0};
+class Solution
+{
 public:
-    int m, n;
-    int DIR[5] = {0, 1, 0, -1, 0};
+    TrieNode *root;
     vector<string> ans;
-    vector<string> findWords(vector<vector<char>>& board, vector<string>& words) {
-        m = board.size(); n = board[0].size();
-        TrieNode trieNode;
-        for (string& word : words) trieNode.addWord(word);
-        
-        for (int r = 0; r < m; ++r)
-            for (int c = 0; c < n; ++c)
-                dfs(board, r, c, &trieNode);
-        return ans;
-    }
-    void dfs(vector<vector<char>>& board, int r, int c, TrieNode* cur) {
-        if (r < 0 || r == m || c < 0 || c == n || board[r][c] == '#' || cur->children[board[r][c]-'a'] == nullptr) return;
-        char orgChar = board[r][c];
-        cur = cur->children[orgChar - 'a'];
-        if (cur->word != nullptr) {
-            ans.push_back(*cur->word);
-            cur->word = nullptr; // Avoid duplication!
+    void addNode(string &s)
+    {
+        TrieNode *temp = root;
+        for (int i = 0; i < s.size(); ++i)
+        {
+            if (temp->arr[s[i] - 'a'] == NULL)
+                temp->arr[s[i] - 'a'] = new TrieNode();
+            temp = temp->arr[s[i] - 'a'];
         }
-        board[r][c] = '#'; // mark as visited!
-        for (int i = 0; i < 4; ++i) dfs(board, r + DIR[i], c + DIR[i+1], cur);
-        board[r][c] = orgChar; // restore org state
+        temp->isEnd = true;
+        temp->word = &s;
+    }
+
+    void dfs(vector<vector<char>> &board, int i, int j, TrieNode *curr)
+    {
+        if (i < 0 || j < 0 || i >= board.size() || j >= board[0].size() || board[i][j] == '#' || curr->arr[board[i][j] - 'a'] == NULL)
+            return;
+        char originalChar = board[i][j];
+        curr = curr->arr[originalChar - 'a'];
+        if (curr->isEnd)
+        {
+            ans.push_back(*curr->word);
+            curr->word = nullptr;
+            curr->isEnd = false;
+        }
+        board[i][j] = '#';
+        for (int k = 0; k < 4; ++k)
+            dfs(board, i + dir[k], j + dir[k + 1], curr);
+        board[i][j] = originalChar;
+    }
+
+    vector<string> findWords(vector<vector<char>> &board, vector<string> &words)
+    {
+        root = new TrieNode();
+        for (string &s : words)
+            addNode(s);
+        for (int i = 0; i < board.size(); ++i)
+            for (int j = 0; j < board[i].size(); ++j)
+                dfs(board, i, j, root);
+        return ans;
     }
 };
