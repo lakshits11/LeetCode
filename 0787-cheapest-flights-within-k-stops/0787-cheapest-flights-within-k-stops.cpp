@@ -1,46 +1,42 @@
-#define tpl tuple<int,int,int>
-class Solution {
+class Solution
+{
 public:
-    int findCheapestPrice(int n, vector<vector<int>>& flights, int src, int dest, int k)
+    int findCheapestPrice(int n, vector<vector<int>> &flights, int src, int dest, int k)
     {
-        // pq : (price, node, steps)
-        priority_queue<tpl, vector<tpl>, greater<tpl>> pq;
-        
-        // adj = (node, price)
-        vector<pair<int,int>> adj[n];
-        
-        for(vector<int> fl : flights)
+        vector<pair<int, int>> adj[n];
+        for (auto it : flights)
         {
-            adj[fl[0]].push_back({fl[1], fl[2]});
+            adj[it[0]].push_back({it[1], it[2]});
         }
-        
-        vector<int> price(n,INT_MAX);
-        vector<int> steps(n, INT_MAX);
-        price[src]=0,steps[src]=0;
-        
-        pq.push({0,src,0});
-        
-        while(!pq.empty())
+        queue<pair<int, pair<int, int>>> q;
+        //{ steps, { node,distance } }
+        q.push({0, {src, 0}});
+        vector<int> dist(n, 1e9);
+        dist[src] = 0;
+        while (!q.empty())
         {
-            auto [currPrice, currNode, currSteps] = pq.top();
-            pq.pop();
-            if(currNode==dest)
-                return currPrice;
-            if(currSteps>=k+1)
-                continue;
-            for(auto &[newNode, newPrice] : adj[currNode])
+            auto it = q.front();
+            q.pop();
+
+            int stops = it.first;
+            int node = it.second.first;
+            int cost = it.second.second;
+
+            if (stops > k) continue;
+
+            for (auto itr : adj[node])
             {
-                int nextPrice = newPrice + currPrice;
-                int nextSteps = currSteps + 1;
-                if(nextPrice < price[newNode] || nextSteps < steps[newNode])
+                int adjNode = itr.first;
+                int edgeWt = itr.second;
+                if (cost + edgeWt < dist[adjNode] && stops <= k)
                 {
-                    price[newNode] = nextPrice;
-                    steps[newNode] = nextSteps;
-                    pq.push({nextPrice, newNode, nextSteps});
+                    dist[adjNode] = cost + edgeWt;
+                    q.push({stops + 1, {adjNode, cost + edgeWt}});
                 }
             }
         }
-        return -1;
-        
+
+        if (dist[dest] == 1e9) return -1;
+        return dist[dest];
     }
 };
