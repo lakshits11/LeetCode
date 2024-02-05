@@ -10,7 +10,7 @@
 
 <p>Return <em>the minimum number of minutes that must elapse until no cell has a fresh orange</em>. If <em>this is impossible, return</em> <code>-1</code>.</p>
 
-<p gp0ni4xku="" k3rah9c2b="">&nbsp;</p>
+<p it8jucolv="" glr1galjm="">&nbsp;</p>
 <p><strong class="example">Example 1:</strong></p>
 <img alt="" src="https://assets.leetcode.com/uploads/2019/02/16/oranges.png" style="width: 650px; height: 137px;">
 <pre><strong>Input:</strong> grid = [[2,1,1],[1,1,0],[0,1,1]]
@@ -31,7 +31,7 @@
 <strong>Explanation:</strong> Since there are already no fresh oranges at minute 0, the answer is just 0.
 </pre>
 
-<p gp0ni4xku="" k3rah9c2b="">&nbsp;</p>
+<p it8jucolv="" glr1galjm="">&nbsp;</p>
 <p><strong>Constraints:</strong></p>
 
 <ul>
