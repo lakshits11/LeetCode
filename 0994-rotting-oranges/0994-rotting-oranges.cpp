@@ -1,7 +1,10 @@
+static const auto speedup = []() -> int{
+    std::ios::sync_with_stdio(false);std::cin.tie(nullptr);return 0;
+}();
+
 class Solution {
 public:
     int orangesRotting(vector<vector<int>>& grid) {
-        ios_base::sync_with_stdio(false);cin.tie(nullptr);
         queue<pair<int, int>> q;
         int days = 0, total = 0, count = 0;
         for(int i=0;i<grid.size();i++)
