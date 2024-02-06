@@ -2,7 +2,7 @@
 
 <p>An <strong>Anagram</strong> is a word or phrase formed by rearranging the letters of a different word or phrase, typically using all the original letters exactly once.</p>
 
-<p>&nbsp;</p>
+<p qeu2vukgr="" lkaou9yns="">&nbsp;</p>
 <p><strong class="example">Example 1:</strong></p>
 <pre><strong>Input:</strong> strs = ["eat","tea","tan","ate","nat","bat"]
 <strong>Output:</strong> [["bat"],["nat","tan"],["ate","eat","tea"]]
@@ -13,7 +13,7 @@
 <pre><strong>Input:</strong> strs = ["a"]
 <strong>Output:</strong> [["a"]]
 </pre>
-<p>&nbsp;</p>
+<p qeu2vukgr="" lkaou9yns="">&nbsp;</p>
 <p><strong>Constraints:</strong></p>
 
 <ul>
