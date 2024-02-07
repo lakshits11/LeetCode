@@ -1,9 +1,10 @@
+static const auto speedup = []() -> int{
+    std::ios::sync_with_stdio(false);std::cin.tie(nullptr);return 0;
+}();
+
 class Solution {
 public:
     string frequencySort(string s) {
-        ios_base::sync_with_stdio(false);
-        cin.tie(nullptr);
-        cout.tie(nullptr);
         map<char, int> m;
         for(char c : s)
             m[c]++;
