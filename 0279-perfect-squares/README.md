@@ -2,7 +2,7 @@
 
 <p>A <strong>perfect square</strong> is an integer that is the square of an integer; in other words, it is the product of some integer with itself. For example, <code>1</code>, <code>4</code>, <code>9</code>, and <code>16</code> are perfect squares while <code>3</code> and <code>11</code> are not.</p>
 
-<p>&nbsp;</p>
+<p kdkg8ggsz="" nu6gcziuf="">&nbsp;</p>
 <p><strong class="example">Example 1:</strong></p>
 
 <pre><strong>Input:</strong> n = 12
@@ -17,7 +17,7 @@
 <strong>Explanation:</strong> 13 = 4 + 9.
 </pre>
 
-<p>&nbsp;</p>
+<p kdkg8ggsz="" nu6gcziuf="">&nbsp;</p>
 <p><strong>Constraints:</strong></p>
 
 <ul>
