@@ -17,8 +17,8 @@
 	<li>Both robots should reach the bottom row in <code>grid</code>.</li>
 </ul>
 
-<p>&nbsp;</p>
-<p><strong>Example 1:</strong></p>
+<p jbt3vljfs="" ilwl67yd3="">&nbsp;</p>
+<p><strong class="example">Example 1:</strong></p>
 <img alt="" src="https://assets.leetcode.com/uploads/2020/04/29/sample_1_1802.png" style="width: 374px; height: 501px;">
 <pre><strong>Input:</strong> grid = [[3,1,1],[2,5,1],[1,5,5],[2,1,1]]
 <strong>Output:</strong> 24
@@ -28,7 +28,7 @@ Cherries taken by Robot #2, (1 + 5 + 5 + 1) = 12.
 Total of cherries: 12 + 12 = 24.
 </pre>
 
-<p><strong>Example 2:</strong></p>
+<p><strong class="example">Example 2:</strong></p>
 <img alt="" src="https://assets.leetcode.com/uploads/2020/04/23/sample_2_1802.png" style="width: 500px; height: 452px;">
 <pre><strong>Input:</strong> grid = [[1,0,0,0,0,0,1],[2,0,0,0,0,3,0],[2,0,9,0,0,0,0],[0,3,0,5,4,0,0],[1,0,2,3,0,0,6]]
 <strong>Output:</strong> 28
@@ -38,7 +38,7 @@ Cherries taken by Robot #2, (1 + 3 + 4 + 3) = 11.
 Total of cherries: 17 + 11 = 28.
 </pre>
 
-<p>&nbsp;</p>
+<p jbt3vljfs="" ilwl67yd3="">&nbsp;</p>
 <p><strong>Constraints:</strong></p>
 
 <ul>
