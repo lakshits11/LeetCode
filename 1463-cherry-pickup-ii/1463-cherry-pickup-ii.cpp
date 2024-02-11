@@ -1,3 +1,7 @@
+static const auto speedup = []() -> int{
+    std::ios::sync_with_stdio(false);std::cin.tie(nullptr);return 0;
+}();
+
 class Solution {
 public:
     
@@ -34,7 +38,6 @@ public:
     }
     
     int cherryPickup(vector<vector<int>>& grid) {
-        ios_base::sync_with_stdio(false);
         int c = grid[0].size();
         int r = grid.size();
         vector<vector<vector<int>>> dp(r, vector<vector<int>> (c, vector<int>(c,-1)));
