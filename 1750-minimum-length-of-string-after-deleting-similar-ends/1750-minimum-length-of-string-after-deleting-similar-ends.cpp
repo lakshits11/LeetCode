@@ -1,24 +1,23 @@
+static const auto speedup = []() -> int{
+    std::ios::sync_with_stdio(false);std::cin.tie(nullptr);return 0;
+}();
+
 class Solution {
 public:
-    int f(string &s, int i, int j, int &n)
-    {
-        if(i>j || i>n-1 || j<0) return 0;
-        if(i==j)   return 1;
-        char x = s[i];
-        char y = s[j];
-        if(x!=y)
-            return (j-i+1);
-        while(i<=n-1 && s[i]==x)
-            i++;
-        while(j>=0 && s[j]==y)
-            j--;
-        return f(s, i, j, n);
-    }
-    
-    int minimumLength(string s)
-    {
-        int n = s.size();
-        int i = 0, j = n-1;
-        return f(s, 0, n-1, n);
+    int minimumLength(string s) {
+        int left = 0;
+        int right = s.size() - 1;
+
+        while (left < right && s[left] == s[right]) {
+            char ch = s[left];
+            while (left <= right && s[left] == ch) {
+                left++;
+            }
+            while (right >= left && s[right] == ch) {
+                right--;
+            }
+        }
+
+        return right - left + 1;
     }
 };
