@@ -2,7 +2,7 @@
 
 <p>A <strong>subarray</strong> is a contiguous part of the array.</p>
 
-<p s0fxg4sgy="" it07ynief="">&nbsp;</p>
+<p nwxvzun0m="" rg74itbym="">&nbsp;</p>
 <p><strong class="example">Example 1:</strong></p>
 
 <pre><strong>Input:</strong> nums = [1,0,1,0,1], goal = 2
@@ -20,7 +20,7 @@
 <strong>Output:</strong> 15
 </pre>
 
-<p s0fxg4sgy="" it07ynief="">&nbsp;</p>
+<p nwxvzun0m="" rg74itbym="">&nbsp;</p>
 <p><strong>Constraints:</strong></p>
 
 <ul>
