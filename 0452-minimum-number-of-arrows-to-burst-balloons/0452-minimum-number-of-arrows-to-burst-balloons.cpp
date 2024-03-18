@@ -1,3 +1,6 @@
+static const auto speedup = []() -> int{
+    std::ios::sync_with_stdio(false);std::cin.tie(nullptr);return 0;
+}();
 bool comp(vector<int> &a, vector<int> &b)
 {
     return a[1] < b[1];
