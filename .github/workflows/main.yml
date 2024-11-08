@@ -1,8 +1,14 @@
 name: GitlabSync
 
 on:
-  - push
-  - delete
+  # Triggers
+  push:
+    branches: [ main, master ]  # Specify branches to sync
+  delete:
+  workflow_dispatch:  # Allows manual trigger from GitHub UI
+  schedule:
+    - cron: '0 */12 * * *'  # Runs every 12 hours as backup
+    # - cron:  '30 5,17 * * *'
 
 jobs:
   sync:
@@ -12,6 +18,8 @@ jobs:
     - uses: actions/checkout@v2
       with:
         fetch-depth: 0
+        submodules: true # Fetch submodules if you are using them
+        lfs: true        # Fetch Git LFS files if you are using Git LFS
     - uses: wangchucheng/git-repo-sync@v0.1.0
       with:
         # Such as https://github.com/wangchucheng/git-repo-sync.git
