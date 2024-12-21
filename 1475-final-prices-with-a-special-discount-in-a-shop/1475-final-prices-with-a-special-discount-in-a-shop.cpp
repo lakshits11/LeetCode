@@ -4,14 +4,25 @@ static const auto speedup = []() -> int{
 class Solution {
 public:
     vector<int> finalPrices(vector<int>& p) {
-        for(int i=0;i<p.size();++i)
+        stack<int> s;
+        int x = 0;
+        int n = p.size();
+        // vector<int> nse(n);
+        for(int i=n-1;i>=0;--i)
         {
-            int j=i+1;
-            while(j<p.size() && p[i]<p[j])
-                j++;
-            if(i!=j && j<p.size())
-                p[i] -= p[j];
+            while(!s.empty() && s.top()>p[i])
+                s.pop();
+            int x = (!s.empty()?s.top():0);            
+            // nse[i] = !s.empty()?s.top():-1;
+            s.push(p[i]);
+            p[i] -= x;
+
         }
+        // for(int i=0;i<n;i++)
+        // {
+        //     if(nse[i]!=-1)
+        //         p[i]-=nse[i];
+        // }
         return p;
     }
 };
