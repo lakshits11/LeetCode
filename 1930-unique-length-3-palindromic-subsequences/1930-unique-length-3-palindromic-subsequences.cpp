@@ -1,31 +1,36 @@
+static const auto speedup = []() -> int{
+    std::ios::sync_with_stdio(false);std::cin.tie(nullptr);return 0;
+}();
 class Solution {
 public:
     int countPalindromicSubsequence(string s) {
-        vector<int> first(26, -1);
-        vector<int> last(26, -1);
+        vector<int> first = vector(26, -1);
+        vector<int> last = vector(26, -1);
 
-        for(int i = 0; i < s.size(); ++i)
-        {
-            int curr = s[i]-'a';
-            if(first[curr] == -1) first[curr] = i;
+        for (int i = 0; i < s.size(); i++) {
+            int curr = s[i] - 'a';
+            if (first[curr] == -1) {
+                first[curr] = i;
+            }
+
             last[curr] = i;
         }
-        
+
         int ans = 0;
-        for(int i = 0; i < 26; ++i)
+        for (int i = 0; i < 26; i++)
         {
-            // element does not exist
-            if(first[i] == -1) continue;
-            
-            // else ...
-            unordered_set<char> bw;
-            for(int j = first[i]+1; j < last[i]; ++j)
+            if (first[i] == -1)
+                continue;
+
+            unordered_set<char> between;
+            for (int j = first[i] + 1; j < last[i]; j++) 
             {
-                bw.insert(s[j]);
+                between.insert(s[j]);
             }
-            ans += bw.size();
+
+            ans += between.size();
         }
-        
+
         return ans;
     }
 };
