@@ -1,32 +1,35 @@
 static const auto speedup = []() -> int{
     std::ios::sync_with_stdio(false);std::cin.tie(nullptr);return 0;
 }();
-
-
-class Solution
-{
+class Solution {
 public:
-    int extend(string &s, int left, int right)
-    {
-        int result = 0;
-        while (left >= 0 && right < s.size() && s[left--] == s[right++])
-            result++;
-        return result;
-    }
-
-    int countSubstrings(string s)
-    {
-        int idx = 0, res = 0, n = s.size();
-        while (idx < s.size())
+    int countSubstrings(string s) {
+        int n = s.size();
+        vector<vector<bool>> dp(n, vector<bool>(n, false));
+        int count = 0;
+        for (int k = 0; k < n; k++) 
         {
-            int front = idx;
-            while (idx < n && s[idx] == s[front])
-                idx += 1;
-            int centerLen = idx - front;
-            res += (centerLen + 1) * centerLen / 2;
-            int extendLen = extend(s, front - 1, idx);
-            res += extendLen;
+            for (int i = 0, j = k; j < n; i++, j++) 
+            {
+                if (k == 0) {
+                    dp[i][j] = true;
+                    count++;
+                } 
+                else if (k == 1) {
+                    dp[i][j] = (s[i] == s[j]);
+                    count += (s[i] == s[j]);
+                } 
+                else {
+                    if (s[i] == s[j]) 
+                    {
+                        dp[i][j] = dp[i + 1][j - 1];
+                        count += (dp[i][j]==true);
+                    }
+                    else
+                        dp[i][j] = false;
+                }
+            }
         }
-        return res;
+        return count;
     }
 };
