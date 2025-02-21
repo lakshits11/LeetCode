@@ -11,40 +11,21 @@
  */
 class FindElements {
 public:
-    vector<int> tt;
-    void ino(TreeNode* root)
+    unordered_set<int> s;
+    void rec(TreeNode* root, int val)
     {
-        if(root==NULL)  return;
-        ino(root->left);
-        tt.push_back(root->val);
-        ino(root->right);
-    }
-    void ff(TreeNode* root)
-    {
-        if(root==NULL)  return;
-        if(root->val == -1)
-            root->val = 0;
-        if(root->left)
-            root->left->val = 2*(root->val) + 1;
-        if(root->right)
-            root->right->val = 2*(root->val) + 2;
-        ff(root->left);
-        ff(root->right);
+        if(root == NULL) return;
+        // root->val = val;
+        s.insert(val);
+        if(root->left) rec(root->left, 2*val+1);
+        if(root->right) rec(root->right, 2*val+2);
     }
     FindElements(TreeNode* root) {
-        ff(root);
-        ino(root);
-        // for(int i=0;i<tt.size();i++)
-        //     cout << tt[i] << " ";
-        // cout << "\n";
-        sort(tt.begin(), tt.end());
+        rec(root, 0);
     }
     
-    bool find(int target) {
-        vector<int>::iterator low1 = lower_bound(tt.begin(), tt.end(), target);
-        int x = low1-tt.begin();
-        if(tt[x]==target)
-            return true;
+    bool find(int k) {
+        if(s.find(k)!=s.end()) return true;
         return false;
     }
 };
