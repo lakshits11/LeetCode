@@ -86,14 +86,14 @@ public:
         vector<int> bobTime(n, -1);
 
         // Step 1: Track Bob’s path using DFS
-        findBobPath(bob, 0, tree, bobTime, 0);
+        findBobPath(bob, 0, tree, bobTime);
 
         // Step 2: DFS for Alice's maximum profit
         return dfs(0, -1, tree, amount, 0, bobTime);
     }
 
 private:
-    bool findBobPath(int node, int time, vector<vector<int>>& tree, vector<int>& bobTime, int bob)
+    bool findBobPath(int node, int time, vector<vector<int>>& tree, vector<int>& bobTime)
     {
         bobTime[node] = time;
         if (node == 0)
@@ -103,7 +103,7 @@ private:
 
         for (int neighbor : tree[node])
         {
-            if (bobTime[neighbor] == -1 && findBobPath(neighbor, time + 1, tree, bobTime, bob))
+            if (bobTime[neighbor] == -1 && findBobPath(neighbor, time + 1, tree, bobTime))
             {
                 return true;
             }
@@ -149,6 +149,7 @@ private:
         }
 
         // Step 4: If leaf node, return income, else return maxProfit + income
+        // cause if leaf node, them maxProfit will remain INT_MIN, so we set it to 0
         return income + (isLeaf ? 0 : maxProfit);
     }
 };
