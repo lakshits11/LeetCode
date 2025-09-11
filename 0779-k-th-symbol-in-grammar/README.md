@@ -1,4 +1,4 @@
-<h2><a href="https://leetcode.com/problems/k-th-symbol-in-grammar/">779. K-th Symbol in Grammar</a></h2><h3>Medium</h3><hr><div><p>We build a table of <code>n</code> rows (<strong>1-indexed</strong>). We start by writing <code>0</code> in the <code>1<sup>st</sup></code> row. Now in every subsequent row, we look at the previous row and replace each occurrence of <code>0</code> with <code>01</code>, and each occurrence of <code>1</code> with <code>10</code>.</p>
+<h2><a href="https://leetcode.com/problems/k-th-symbol-in-grammar">779. K-th Symbol in Grammar</a></h2><h3>Medium</h3><hr><p>We build a table of <code>n</code> rows (<strong>1-indexed</strong>). We start by writing <code>0</code> in the <code>1<sup>st</sup></code> row. Now in every subsequent row, we look at the previous row and replace each occurrence of <code>0</code> with <code>01</code>, and each occurrence of <code>1</code> with <code>10</code>.</p>
 
 <ul>
 	<li>For example, for <code>n = 3</code>, the <code>1<sup>st</sup></code> row is <code>0</code>, the <code>2<sup>nd</sup></code> row is <code>01</code>, and the <code>3<sup>rd</sup></code> row is <code>0110</code>.</li>
@@ -9,14 +9,16 @@
 <p>&nbsp;</p>
 <p><strong class="example">Example 1:</strong></p>
 
-<pre><strong>Input:</strong> n = 1, k = 1
+<pre>
+<strong>Input:</strong> n = 1, k = 1
 <strong>Output:</strong> 0
 <strong>Explanation:</strong> row 1: <u>0</u>
 </pre>
 
 <p><strong class="example">Example 2:</strong></p>
 
-<pre><strong>Input:</strong> n = 2, k = 1
+<pre>
+<strong>Input:</strong> n = 2, k = 1
 <strong>Output:</strong> 0
 <strong>Explanation:</strong> 
 row 1: 0
@@ -25,7 +27,8 @@ row 2: <u>0</u>1
 
 <p><strong class="example">Example 3:</strong></p>
 
-<pre><strong>Input:</strong> n = 2, k = 2
+<pre>
+<strong>Input:</strong> n = 2, k = 2
 <strong>Output:</strong> 1
 <strong>Explanation:</strong> 
 row 1: 0
@@ -39,4 +42,3 @@ row 2: 0<u>1</u>
 	<li><code>1 &lt;= n &lt;= 30</code></li>
 	<li><code>1 &lt;= k &lt;= 2<sup>n - 1</sup></code></li>
 </ul>
-</div>
