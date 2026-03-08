@@ -9,11 +9,13 @@
 ## Array
 | Problem Name | Difficulty |
 | ------- | ------- |
+| [0407-trapping-rain-water-ii](https://github.com/lakshits11/LeetCode/tree/main/0407-trapping-rain-water-ii/) | Hard |
 | [1582-special-positions-in-a-binary-matrix](https://github.com/lakshits11/LeetCode/tree/main/1582-special-positions-in-a-binary-matrix/) | Easy |
 | [1980-find-unique-binary-string](https://github.com/lakshits11/LeetCode/tree/main/1980-find-unique-binary-string/) | Medium |
 ## Matrix
 | Problem Name | Difficulty |
 | ------- | ------- |
+| [0407-trapping-rain-water-ii](https://github.com/lakshits11/LeetCode/tree/main/0407-trapping-rain-water-ii/) | Hard |
 | [1582-special-positions-in-a-binary-matrix](https://github.com/lakshits11/LeetCode/tree/main/1582-special-positions-in-a-binary-matrix/) | Easy |
 ## String
 | Problem Name | Difficulty |
@@ -28,4 +30,12 @@
 | Problem Name | Difficulty |
 | ------- | ------- |
 | [1980-find-unique-binary-string](https://github.com/lakshits11/LeetCode/tree/main/1980-find-unique-binary-string/) | Medium |
+## Breadth-First Search
+| Problem Name | Difficulty |
+| ------- | ------- |
+| [0407-trapping-rain-water-ii](https://github.com/lakshits11/LeetCode/tree/main/0407-trapping-rain-water-ii/) | Hard |
+## Heap (Priority Queue)
+| Problem Name | Difficulty |
+| ------- | ------- |
+| [0407-trapping-rain-water-ii](https://github.com/lakshits11/LeetCode/tree/main/0407-trapping-rain-water-ii/) | Hard |
 <!---LeetCode Topics End-->
