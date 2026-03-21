@@ -22,12 +22,6 @@ jobs:
 
     - name: Push to GitLab Backup
       run: |
-        # Ensure you replace 'your-repo-name.git' with your actual GitLab repo name!
-        # This formats the URL to securely pass your credentials
         GITLAB_URL="https://${{ secrets.TARGET_USERNAME }}:${{ secrets.TARGET_TOKEN }}@gitlab.com/${{ secrets.TARGET_USERNAME }}/lcsubmissions.git"
-        
-        # Add GitLab as a remote repository
         git remote add gitlab "$GITLAB_URL"
-        
-        # Push all branches and tags forcefully to make GitLab an exact mirror of GitHub
         git push gitlab --mirror
