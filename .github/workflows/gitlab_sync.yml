@@ -24,4 +24,5 @@ jobs:
       run: |
         GITLAB_URL="https://${{ secrets.TARGET_USERNAME }}:${{ secrets.TARGET_TOKEN }}@gitlab.com/${{ secrets.TARGET_USERNAME }}/lcsubmissions.git"
         git remote add gitlab "$GITLAB_URL"
-        git push gitlab --mirror
+        git remote set-head origin -d || true
+        git push gitlab '+refs/remotes/origin/*:refs/heads/*' '+refs/tags/*:refs/tags/*'
