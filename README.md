@@ -12,11 +12,13 @@
 | [0407-trapping-rain-water-ii](https://github.com/lakshits11/LeetCode/tree/main/0407-trapping-rain-water-ii/) | Hard |
 | [1582-special-positions-in-a-binary-matrix](https://github.com/lakshits11/LeetCode/tree/main/1582-special-positions-in-a-binary-matrix/) | Easy |
 | [1980-find-unique-binary-string](https://github.com/lakshits11/LeetCode/tree/main/1980-find-unique-binary-string/) | Medium |
+| [3643-flip-square-submatrix-vertically](https://github.com/lakshits11/LeetCode/tree/main/3643-flip-square-submatrix-vertically/) | Easy |
 ## Matrix
 | Problem Name | Difficulty |
 | ------- | ------- |
 | [0407-trapping-rain-water-ii](https://github.com/lakshits11/LeetCode/tree/main/0407-trapping-rain-water-ii/) | Hard |
 | [1582-special-positions-in-a-binary-matrix](https://github.com/lakshits11/LeetCode/tree/main/1582-special-positions-in-a-binary-matrix/) | Easy |
+| [3643-flip-square-submatrix-vertically](https://github.com/lakshits11/LeetCode/tree/main/3643-flip-square-submatrix-vertically/) | Easy |
 ## String
 | Problem Name | Difficulty |
 | ------- | ------- |
@@ -38,4 +40,8 @@
 | Problem Name | Difficulty |
 | ------- | ------- |
 | [0407-trapping-rain-water-ii](https://github.com/lakshits11/LeetCode/tree/main/0407-trapping-rain-water-ii/) | Hard |
+## Two Pointers
+| Problem Name | Difficulty |
+| ------- | ------- |
+| [3643-flip-square-submatrix-vertically](https://github.com/lakshits11/LeetCode/tree/main/3643-flip-square-submatrix-vertically/) | Easy |
 <!---LeetCode Topics End-->
