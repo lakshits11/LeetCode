@@ -15,6 +15,7 @@
 | [1886-determine-whether-matrix-can-be-obtained-by-rotation](https://github.com/lakshits11/LeetCode/tree/main/1886-determine-whether-matrix-can-be-obtained-by-rotation/) | Easy |
 | [1980-find-unique-binary-string](https://github.com/lakshits11/LeetCode/tree/main/1980-find-unique-binary-string/) | Medium |
 | [3643-flip-square-submatrix-vertically](https://github.com/lakshits11/LeetCode/tree/main/3643-flip-square-submatrix-vertically/) | Easy |
+| [3653-xor-after-range-multiplication-queries-i](https://github.com/lakshits11/LeetCode/tree/main/3653-xor-after-range-multiplication-queries-i/) | Medium |
 ## Matrix
 | Problem Name | Difficulty |
 | ------- | ------- |
@@ -62,4 +63,12 @@
 | Problem Name | Difficulty |
 | ------- | ------- |
 | [0084-largest-rectangle-in-histogram](https://github.com/lakshits11/LeetCode/tree/main/0084-largest-rectangle-in-histogram/) | Hard |
+## Divide and Conquer
+| Problem Name | Difficulty |
+| ------- | ------- |
+| [3653-xor-after-range-multiplication-queries-i](https://github.com/lakshits11/LeetCode/tree/main/3653-xor-after-range-multiplication-queries-i/) | Medium |
+## Simulation
+| Problem Name | Difficulty |
+| ------- | ------- |
+| [3653-xor-after-range-multiplication-queries-i](https://github.com/lakshits11/LeetCode/tree/main/3653-xor-after-range-multiplication-queries-i/) | Medium |
 <!---LeetCode Topics End-->
