@@ -12,6 +12,7 @@
 | [0084-largest-rectangle-in-histogram](https://github.com/lakshits11/LeetCode/tree/main/0084-largest-rectangle-in-histogram/) | Hard |
 | [0407-trapping-rain-water-ii](https://github.com/lakshits11/LeetCode/tree/main/0407-trapping-rain-water-ii/) | Hard |
 | [1582-special-positions-in-a-binary-matrix](https://github.com/lakshits11/LeetCode/tree/main/1582-special-positions-in-a-binary-matrix/) | Easy |
+| [1855-maximum-distance-between-a-pair-of-values](https://github.com/lakshits11/LeetCode/tree/main/1855-maximum-distance-between-a-pair-of-values/) | Medium |
 | [1886-determine-whether-matrix-can-be-obtained-by-rotation](https://github.com/lakshits11/LeetCode/tree/main/1886-determine-whether-matrix-can-be-obtained-by-rotation/) | Easy |
 | [1980-find-unique-binary-string](https://github.com/lakshits11/LeetCode/tree/main/1980-find-unique-binary-string/) | Medium |
 | [3643-flip-square-submatrix-vertically](https://github.com/lakshits11/LeetCode/tree/main/3643-flip-square-submatrix-vertically/) | Easy |
@@ -50,6 +51,7 @@
 ## Two Pointers
 | Problem Name | Difficulty |
 | ------- | ------- |
+| [1855-maximum-distance-between-a-pair-of-values](https://github.com/lakshits11/LeetCode/tree/main/1855-maximum-distance-between-a-pair-of-values/) | Medium |
 | [3643-flip-square-submatrix-vertically](https://github.com/lakshits11/LeetCode/tree/main/3643-flip-square-submatrix-vertically/) | Easy |
 ## Sorting
 | Problem Name | Difficulty |
@@ -71,4 +73,8 @@
 | Problem Name | Difficulty |
 | ------- | ------- |
 | [3653-xor-after-range-multiplication-queries-i](https://github.com/lakshits11/LeetCode/tree/main/3653-xor-after-range-multiplication-queries-i/) | Medium |
+## Binary Search
+| Problem Name | Difficulty |
+| ------- | ------- |
+| [1855-maximum-distance-between-a-pair-of-values](https://github.com/lakshits11/LeetCode/tree/main/1855-maximum-distance-between-a-pair-of-values/) | Medium |
 <!---LeetCode Topics End-->
